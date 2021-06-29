@@ -38,7 +38,7 @@ class BSTable {
                     <i  class="material-icons" style="color:black; font-size:15px;">delete</i>
                 </button>
                 <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;">
-                    <i  class="material-icons" style="color:black; font-size:15px;">done</i>
+                    <i  class="material-icons" style="color:black; font-size:15px;">check</i>
                 </button>
                 <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;">
                     <i  class="material-icons" style="color:black; font-size:15px;">cancel</i>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -40,7 +42,7 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="username" placeholder="Digite seu Código" required autofocus>
+                            <input type="text" class="form-control" name="username" placeholder="Digite seu Código" $user required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -48,7 +50,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Digite a Senha" required>
+                            <input type="password" class="form-control" name="password" placeholder="Digite a Senha" $user required>
                         </div>
                     </div>
                     <div class="row">
@@ -58,6 +60,7 @@
                         </div>
                         <div class="col-xs-4">
                             <button class="btn btn-block bg-pink waves-effect" type="submit">ENTRAR</button>
+                            
                         </div>
                     </div>
                     <div class="row m-t-15 m-b--20">
@@ -72,6 +75,11 @@
         </div>
     </div>
 
+    <?php
+        include("conex.php");
+        echo conex($user, $password)
+    ?>
+    
     <!-- Jquery Core Js -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
 

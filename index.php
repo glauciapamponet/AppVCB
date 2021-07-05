@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include("conex.php");
+?>
+
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -293,10 +298,8 @@
                       </div>
                     <!-- <div class="email">rihanna@vcb.com</div> -->
                     <div class="" style="margin-top: 32px; text-align: right; margin-right:-8px;" >
-                        <a href="pages/examples/sign-in.php"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
+                        <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
-
-
 
                     <!-- <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>

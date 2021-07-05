@@ -25,6 +25,9 @@
     <!-- Morris Chart Css-->
     <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
 
+    <!-- Sweetalert Css -->
+    <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
 
@@ -569,13 +572,13 @@
                             <h2>QUADRO DE VENDAS DO MÊS </h2>
                         </div>
                         <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
+                            <div class="table-responsive js-sweetalert" >
+                                <table id="mainTable" class="table table-hover dashboard-task-infos table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Nome</th>
-                                            <th>Frase Motivacional do Dia</th>
+
                                             <th>Vendidos</th>
                                             <th>Progresso</th>
                                         </tr>
@@ -584,7 +587,7 @@
                                         <tr>
                                             <td>id</td>
                                             <td>Linda</td>
-                                            <td><span class="label bg-black">Oculos azuis são tudo!</span></td>
+                                            
                                             <td>5</td>
                                             <td>
                                                 <div class="progress">
@@ -595,7 +598,7 @@
                                         <tr>
                                             <td>id</td>
                                             <td>Juliette</td>
-                                            <td><span class="label bg-black">1 milhão e meio não é o bastante!</span></td>
+
                                             <td>8</td>
                                             <td>
                                                 <div class="progress">
@@ -606,7 +609,7 @@
                                         <tr>
                                             <td>id</td>
                                             <td>Gil</td>
-                                            <td><span class="label bg-black">Vamo vender, Brasiiiil!</span></td>
+
                                             <td>15</td>
                                             <td>
                                                 <div class="progress">
@@ -617,7 +620,7 @@
                                         <tr>
                                             <td>id</td>
                                             <td>Paula</td>
-                                            <td><span class="label bg-black">Vendendo juntos e Shallow Now!</span></td>
+
                                             <td>4</td>
                                             <td>
                                                 <div class="progress">
@@ -666,6 +669,12 @@
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
 
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
     <!-- Jquery CountTo Plugin Js -->
     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
 
@@ -686,9 +695,18 @@
     <!-- Sparkline Chart Plugin Js -->
     <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
+    <!-- SweetAlert Plugin Js -->
+    <script src="plugins/sweetalert/sweetalert.min.js"></script>
+
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/index.js"></script>
+    <script src="js/pages/ui/dialogs.js"></script>
+    <script src="js/pages/tables/jquery-datatable.js"></script>
+    <script src="js/pages/tables/editable-table.js"></script>
+    <script src="js/pages/tables/editable.js"></script>
+
+    <script src="plugins/editable-table/mindmup-editabletable.js"></script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>

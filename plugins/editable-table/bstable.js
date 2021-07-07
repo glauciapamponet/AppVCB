@@ -29,7 +29,7 @@ class BSTable {
       onDelete: function() {},        // Called after deletion
       onAdd: function() {},           // Called when added a new row
       advanced: {                     // Do not override advanced unless you know what youre doing
-          columnLabel: 'Actions',
+          columnLabel: '',
           buttonHTML: `<div class="btn-group pull-right">
                 <button id="bEdit" type="button" class="btn btn-sm btn-default">
                     <i  class="material-icons" style="color:black; font-size:15px;">edit</i>

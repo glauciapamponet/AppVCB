@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Cadastro Dependentes | VCB</title>
+    <title>Cadastro Livros | VCB</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -29,6 +29,9 @@
 
     <!-- Sweet Alert Css -->
     <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
@@ -58,13 +61,24 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../index.html">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand" href="../index.html">ADMINBSB - MATERIAL DESIGN</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -126,13 +140,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="vendas.html">
+                        <a href="pages/phy.html">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="funcionarios.html">
+                        <a href="pages/phy.html">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -152,18 +166,18 @@
                                   <li><a href="cadDep.html">Dependentes</a></li>
                               </ul>
                           </li>
-                              <li>
-                                  <a href="cadLivro.html">Livros</a>
-                              </li>
-                              <li>
-                                  <a href="cadEdit.html">Editoras</a>
-                              </li>
-                              <li>
-                                  <a href="cadCli.html">Clientes</a>
-                              </li>
-                              <li>
-                                  <a href="cadVen.html">Vendas</a>
-                              </li>
+                          <li>
+                              <a href="cadLivro.html">Livros</a>
+                          </li>
+                          <li>
+                              <a href="cadEdit.html">Editoras</a>
+                          </li>
+                          <li>
+                              <a href="cadCli.html">Clientes</a>
+                          </li>
+                          <li>
+                              <a href="cadVen.html">Vendas</a>
+                          </li>
 
                         </ul>
                     </li>
@@ -188,43 +202,73 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                CADASTRO DEPENDENTES
+                                CADASTRO FUNCIONARIOS
                             </h2>
                         </div>
                         <div class="body">
 
                             <div class="row clearfix">
                               <div class="col-md-2">
-                                <b>Funcionário </b>
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="ID Cliente">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="ID Vendedor">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                <b>Tipo de Pagamento</b>
                                       <select class="form-control show-tick">
-                                          <option>A</option>
-                                          <option>B</option>
+                                          <option>Gerente</option>
+                                          <option>Caixa</option>
+                                          <option>Estoquista</option>
+                                          <option>Vendedor</option>
                                       </select>
                               </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Data Nascimento">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Relação">
-                                        </div>
-                                    </div>
-                                </div>
+                              <div class="table-responsive">
+                            		<button id="table2-new-row-button" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
+                        		  	<table id="table2" class="table table-bordered table-striped table-hover js-basic-example dataTable" >
+                        			  	<thead class="thead-dark">
+                        				    <tr>
+                        				      <th scope="col">#</th>
+                        				      <th scope="col">First</th>
+                                      <th scope="col">First</th>
+                        				    </tr>
+                        			  	</thead>
+                        			  	<tbody>
+                        				    <tr>
+                        				      <th scope="row">1</th>
+                        				      <td>Mark</td>
+                                      <td>Mark</td>
+                        				    </tr>
+                        				    <tr>
+                        				      <th scope="row">2</th>
+                        				      <td>Jacob</td>
+                                      <td>Jacob</td>
+                        				    </tr>
+                        				    <tr>
+                        				      <th scope="row">3</th>
+                        				      <td>Larry</td>
+                                      <td>Larry</td>
+                        				    </tr>
+                        			  	</tbody>
+                        			</table>
+                        		</div>
+
+                          </div>
+                            <div class="row clearfix">
+
+
                                 <div class="col-md-1">
                                     <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
                                 </div>
+
 
                             </div>
                         </div>
@@ -234,6 +278,18 @@
             <!-- #END# Multi Column -->
         </div>
     </section>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+
+
+    <script src="../plugins/editable-table/bstable.js"></script>
+    <script src="../plugins/editable-table/mindmup-editabletable.js"></script>
+    <script src="../js/pages/tables/editable.js"></script>
 
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>

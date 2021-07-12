@@ -36,7 +36,8 @@ $(function () {
 
 //These codes takes from http://t4t5.github.io/sweetalert/
 function showBasicMessage() {
-    swal("Here's a message!");
+    swal("Here's a message!\n AAA");
+
 }
 
 function showWithTitleMessage() {
@@ -91,8 +92,8 @@ function showWithCustomIconMessage() {
 
 function showHtmlMessage() {
     swal({
-        title: "HTML <small>Title</small>!",
-        text: "A custom <span style=\"color: #CC0000\">html<span> message.",
+        title: "Itens da Venda",
+        text: "<table align=center cellspacing =16><tr><td>Livro A</td><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td>50,00</td></tr><tr><td>Livro B</td><td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td>40,00</td></table>",
         html: true
     });
 }

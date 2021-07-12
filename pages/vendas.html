@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Clientes - VCB</title>
+    <title>Vendas - VCB</title>
 
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
@@ -21,6 +21,9 @@
 
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Sweetalert Css -->
+    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
@@ -418,9 +421,9 @@
                             </ul>
 
                         </div>
-                        <div class="body">
-                            <div class="table-responsive">
-                                <table id="table1" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <div class="body js-sweetalert">
+                            <div class="table-responsive ">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -429,6 +432,7 @@
                                             <th>Age</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -439,6 +443,7 @@
                                             <th>Age</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -449,6 +454,9 @@
                                             <td>61</td>
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
+                                            <td><div class="js-sweetalert">
+                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
+                                            </div> </td>
                                         </tr>
                                         <tr>
                                             <td>Garrett Winters</td>
@@ -569,12 +577,24 @@
     <!-- Slimscroll Plugin Js -->
     <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="../plugins/bootstrap-notify/bootstrap-notify.js"></script>
+
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
+
+    <!-- SweetAlert Plugin Js -->
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../js/admin.js"></script>
+    <script src="../js/pages/ui/dialogs.js"></script>
 
     <!-- Editable Table Plugin Js -->
     <script src="../plugins/editable-table/mindmup-editabletable.js"></script>
     <script src="../plugins/editable-table/bstable.js"></script>
+
+
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
@@ -588,7 +608,6 @@
     <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
     <!-- Custom Js -->
-    <script src="../js/admin.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
     <script src="../js/pages/tables/editable-table.js"></script>
     <script src="../js/pages/tables/editable.js"></script>

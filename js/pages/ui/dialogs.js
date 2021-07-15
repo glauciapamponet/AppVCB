@@ -108,13 +108,13 @@ function showAutoCloseTimerMessage() {
 
 function showPromptMessage() {
     swal({
-        title: "An input!",
-        text: "Write something interesting:",
+        title: "Frase do dia!",
+        text: "Escreva algo:",
         type: "input",
         showCancelButton: true,
         closeOnConfirm: false,
         animation: "slide-from-top",
-        inputPlaceholder: "Write something"
+        inputPlaceholder: "Frase"
     }, function (inputValue) {
         if (inputValue === false) return false;
         if (inputValue === "") {

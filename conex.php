@@ -11,6 +11,6 @@
     if (!$conex){
         die ("Falha na conexão: " . mysqli_connect_erro());
     }else{
-        echo "Conexão realizada";
+        //echo "Conexão realizada";
     }
 ?>

@@ -73,8 +73,9 @@
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
+            <img src="../favicon.ico" width="70" height="70" style="margin-left:-365px;">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand" href="../index.php" style= "margin-left: 50px">VCB - Voodoo Chicken Bookstore</a>
             </div>
         </div>
     </nav>

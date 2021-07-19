@@ -35,6 +35,18 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function formatar_mascara(src, mascara) {
+            var campo = src.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(campo);
+            if(texto.substring(0,1) != saida) {
+                src.value += texto.substring(0,1);
+            }
+        }
+    </script>
+
 </head>
 
 <body class="theme-black">
@@ -72,8 +84,9 @@
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
+            <img src="../favicon.ico" width="70" height="70" style="margin-left:-365px;">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand" href="../index.php" style= "margin-left: 50px">VCB - Voodoo Chicken Bookstore</a>
             </div>
         </div>
     </nav>
@@ -205,110 +218,115 @@
                                 CADASTRO CLIENTES
                             </h2>
                         </div>
+                        <!-- Cliente-->
                         <div class="body">
+                            <form  action="proc_cadcli.php" method= "POST" target="_blank">
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="nomecli" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="rgcli" class="form-control" placeholder="RG" onkeypress="formatar_mascara(this,'##.###.###-#')" maxlength="12"  required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="cpfcli" class="form-control" placeholder="CPF" onkeypress="formatar_mascara(this,'###.###.###-##')" maxlength="14"  required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="date" name="datanascim" class="form-control" placeholder="Data Nascimento" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END Cliente-->
+                                <!-- Endereço Cliente-->
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="logradourocli" class="form-control" placeholder="Lograoduro" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="numerocli" class="form-control" placeholder="nº" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="complementocli" class="form-control" maxlength="45" placeholder="Complemento">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="bairrocli" class="form-control" placeholder="Bairro" maxlength="20" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="row clearfix">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="cidadecli" class="form-control" placeholder="Cidade" maxlength="20" required="required">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="RG">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="cepcli" class="form-control" placeholder="CEP" maxlength="9" required="required" onkeypress="formatar_mascara(this,'#####-###')">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
+                                    <!-- END Endereço Cliente-->
+                                    <!-- Telefone Cliente-->
+                                    <div class="col-md-1">
+                                        <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="CPF">
+                                            <input type="text" name="dddcli" class="form-control" placeholder="DDD" maxlength="3" required="required">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Data Nascimento">
+                                            <input type="text" name="numerotelcli" class="form-control" placeholder="Número" maxlength="9" required="required">
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="row clearfix">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Lograoduro">
-                                        </div>
-                                    </div>
+                                <div class="col-md-2">
+                                        <select name="tipotelcli" class="form-control show-tick">
+                                            <option value="Celular">Celular</option>
+                                            <option value="Fixo">Fixo</option>
+                                        </select>
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="nº">
-                                        </div>
-                                    </div>
+                                <!-- END Endereço Cliente-->
+                                <div class="col-md-2">
+                                    <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Complemento">
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Bairro">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row clearfix">
-                              <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="Cidade">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="CEP">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-1">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="DDD">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="Número">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-3">
-                                      <select class="form-control show-tick">
-                                          <option>Fixo</option>
-                                          <option>Celular</option>
-                                      </select>
-                              </div>
-                              <div class="col-md-2">
-                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                              </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

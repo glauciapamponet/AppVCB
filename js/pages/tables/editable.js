@@ -1,4 +1,4 @@
-var example1 = new BSTable("table1", {editableColumns:"1,4,5"});
+var example1 = new BSTable("table1", {editableColumns:"0,1,3"});
 example1.init();
 
 // Example with a add new row button & only some columns editable & removed actions column label

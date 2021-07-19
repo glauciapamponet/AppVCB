@@ -1,14 +1,11 @@
-$(function () {
-    $('.js-basic-example').DataTable({
-        responsive: true
-    });
 
-    //Exportable table
-    $('.js-exportable').DataTable({
-        dom: 'Bfrtip',
-        responsive: true,
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-});
+$(document).ready(function() {
+  $('#listar').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": "../../../pages/proc_pesq_cli.php",
+      "type": "POST"
+    }
+  });
+} );

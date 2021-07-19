@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Cadastro Clientes | VCB</title>
+    <title>Cadastro Vendas | VCB</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -29,6 +29,9 @@
 
     <!-- Sweet Alert Css -->
     <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
@@ -73,7 +76,13 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.html">VCB - Voodoo Chicken Bookstore</a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
             </div>
         </div>
     </nav>
@@ -84,7 +93,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="..\images/gerente.jpg" width="120" height="120" alt="User" style="margin-top:-12px;">
+                    <img src="..\images\gerente.jpg" width="120" height="120" alt="User" style="margin-top:-12px;">
                 </div>
                 <div class="info-container" style="margin-top:-100px; margin-left:140px;">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,15 +106,6 @@
                     <div class="" style="margin-top: 13px; text-align: right; margin-right:-8px;" >
                         <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
-
-
-
-                    <!-- <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sair</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
             <!-- #User Info -->
@@ -114,13 +114,13 @@
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="../index.html">
+                        <a href="../index.php">
                             <i class="material-icons">grid_view</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="clientes.html">
+                        <a href="clientes.php">
                             <i class="material-icons">face</i>
                             <span>Clientes</span>
                         </a>
@@ -132,21 +132,21 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="livros.html">Livros</a>
+                                <a href="livros.php">Livros</a>
                             </li>
                             <li>
-                                <a href="editoras.html">Editoras</a>
+                                <a href="editoras.php">Editoras</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="vendas.html">
+                        <a href="vendas.php">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="funcionarios.html">
+                        <a href="funcionarios.php">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -162,21 +162,21 @@
                                     Funcionários
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="cadFunc.html">Cadastro</a></li>
-                                  <li><a href="cadDep.html">Dependentes</a></li>
+                                  <li><a href="cadFunc.php">Cadastro</a></li>
+                                  <li><a href="cadDep.php">Dependentes</a></li>
                               </ul>
                           </li>
                               <li>
-                                  <a href="cadLivro.html">Livros</a>
+                                  <a href="cadLivro.php">Livros</a>
                               </li>
                               <li>
-                                  <a href="cadEdit.html">Editoras</a>
+                                  <a href="cadEdit.php">Editoras</a>
                               </li>
                               <li>
-                                  <a href="cadCli.html">Clientes</a>
+                                  <a href="cadCli.php">Clientes</a>
                               </li>
                               <li>
-                                  <a href="cadVen.html">Vendas</a>
+                                  <a href="cadVen.php">Vendas</a>
                               </li>
 
                         </ul>
@@ -202,114 +202,78 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                CADASTRO CLIENTES
+                                CADASTRO VENDAS
                             </h2>
                         </div>
                         <div class="body">
 
                             <div class="row clearfix">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="RG">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="CPF">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Data Nascimento">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row clearfix">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Lograoduro">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="nº">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Complemento">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Bairro">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row clearfix">
                               <div class="col-md-2">
                                   <div class="form-group">
                                       <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="Cidade">
+                                          <input type="text" class="form-control" placeholder="ID Cliente">
                                       </div>
                                   </div>
                               </div>
                               <div class="col-md-2">
                                   <div class="form-group">
                                       <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="CEP">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-1">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="DDD">
+                                          <input type="text" class="form-control" placeholder="ID Vendedor">
                                       </div>
                                   </div>
                               </div>
                               <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="Número">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-3">
+                                <b>Tipo de Pagamento</b>
                                       <select class="form-control show-tick">
-                                          <option>Fixo</option>
-                                          <option>Celular</option>
+                                          <option>Gerente</option>
+                                          <option>Caixa</option>
+                                          <option>Estoquista</option>
+                                          <option>Vendedor</option>
                                       </select>
                               </div>
-                              <div class="col-md-2">
-                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                              </div>
+                              <div class="table-responsive">
+                            		<button id="table2-new-row-button" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
+                        		  	<table id="table2" class="table table-bordered table-striped table-hover  dataTable" >
+                        			  	<thead class="thead-dark">
+                        				    <tr>
+                        				      <th scope="col">#</th>
+                        				      <th scope="col">id Livro</th>
+                                      <th scope="col">Quant</th>
+                        				    </tr>
+                        			  	</thead>
+                        			  	<tbody>
+                        				    <tr>
+                        				      <th scope="row">1</th>
+                        				      <td>Mark</td>
+                                      <td>Mark</td>
+                        				    </tr>
+                        				    <tr>
+                        				      <th scope="row">2</th>
+                        				      <td>Jacob</td>
+                                      <td>Jacob</td>
+                        				    </tr>
+                        				    <tr>
+                        				      <th scope="row">3</th>
+                        				      <td>Larry</td>
+                                      <td>Larry</td>
+                        				    </tr>
+                        			  	</tbody>
+                        			</table>
+                        		</div>
+
+                          </div>
+                            <div class="row clearfix">
+
+
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                </div>
+
+
                             </div>
                         </div>
+                    </div>
+
                     </div>
                 </div>
             </div>
@@ -325,13 +289,45 @@
 
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../plugins/node-waves/waves.js"></script>
+
+    <!-- Editable Table Plugin Js -->
+    <script src="../plugins/editable-table/mindmup-editabletable.js"></script>
+    <script src="../plugins/editable-table/bstable.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../js/admin.js"></script>
+    <script src="../js/pages/tables/jquery-datatable.js"></script>
+    <script src="../js/pages/tables/editable-table.js"></script>
+    <script src="../js/pages/tables/editable.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../js/demo.js"></script>
+
+
+    <!-- Select Plugin Js -->
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="../plugins/multi-select/js/jquery.multi-select.js"></script>
 
     <!-- Jquery Spinner Plugin Js -->
     <script src="../plugins/jquery-spinner/js/jquery.spinner.js"></script>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Bootstrap Tags Input Plugin Js -->
     <script src="../plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
@@ -339,15 +335,10 @@
     <!-- noUISlider Plugin Js -->
     <script src="../plugins/nouislider/nouislider.js"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="../plugins/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
-    <script src="../js/admin.js"></script>
     <script src="../js/pages/forms/advanced-form-elements.js"></script>
 
-    <!-- Demo Js -->
-    <script src="../js/demo.js"></script>
 </body>
 
 </html>

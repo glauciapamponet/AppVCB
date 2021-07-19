@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Funcionários - VCB</title>
+    <title>Livros - VCB</title>
 
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
@@ -71,8 +71,11 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.html">VCB - Voodoo Chicken Bookstore</a>
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.php">VCB - Voodoo Chicken Bookstore</a>
             </div>
+
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -112,13 +115,13 @@
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="../index.html">
+                        <a href="../index.php">
                             <i class="material-icons">grid_view</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="clientes.html">
+                        <a href="clientes.php">
                             <i class="material-icons">face</i>
                             <span>Clientes</span>
                         </a>
@@ -130,21 +133,21 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="livros.html">Livros</a>
+                                <a href="livros.php">Livros</a>
                             </li>
                             <li>
-                                <a href="editoras.html">Editoras</a>
+                                <a href="editoras.php">Editoras</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="vendas.html">
+                        <a href="vendas.php">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="funcionarios.html">
+                        <a href="funcionarios.php">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -160,21 +163,21 @@
                                     Funcionários
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="cadFunc.html">Cadastro</a></li>
-                                  <li><a href="cadDep.html">Dependentes</a></li>
+                                  <li><a href="cadFunc.php">Cadastro</a></li>
+                                  <li><a href="cadDep.php">Dependentes</a></li>
                               </ul>
                           </li>
                               <li>
-                                  <a href="cadLivro.html">Livros</a>
+                                  <a href="cadLivro.php">Livros</a>
                               </li>
                               <li>
-                                  <a href="cadEdit.html">Editoras</a>
+                                  <a href="cadEdit.php">Editoras</a>
                               </li>
                               <li>
-                                  <a href="cadCli.html">Clientes</a>
+                                  <a href="cadCli.php">Clientes</a>
                               </li>
                               <li>
-                                  <a href="cadVen.html">Vendas</a>
+                                  <a href="cadVen.php">Vendas</a>
                               </li>
 
                         </ul>
@@ -204,8 +207,9 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                FUNCIONARIOS
+                                LIVROS
                             </h2>
+
                         </div>
                         <div class="body">
                             <div class="table-responsive">
@@ -335,91 +339,6 @@
                                             <td>2008/10/16</td>
                                             <td>$470,600</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                DEPENDENTES
-                            </h2>
-
-                        </div>
-                        <div class="body">
-                            <div class="table-responsive">
-                                <table id="table1" class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </div>

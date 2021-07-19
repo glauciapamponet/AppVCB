@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+include_once "conex.php";
+?>
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -77,7 +79,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.html">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
             </div>
         </div>
     </nav>
@@ -118,13 +120,13 @@
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="material-icons">grid_view</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/clientes.html">
+                        <a href="pages/clientes.php">
                             <i class="material-icons">face</i>
                             <span>Clientes</span>
                         </a>

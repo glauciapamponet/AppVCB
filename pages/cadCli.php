@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Cadastro Dependentes | VCB</title>
+    <title>Cadastro Clientes | VCB</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -58,17 +58,22 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../index.html">VCB - Voodoo Chicken Bookstore</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                </ul>
+                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
             </div>
         </div>
     </nav>
@@ -92,6 +97,15 @@
                     <div class="" style="margin-top: 13px; text-align: right; margin-right:-8px;" >
                         <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
+
+
+
+                    <!-- <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sair</a></li>
+                        </ul>
+                    </div> -->
                 </div>
             </div>
             <!-- #User Info -->
@@ -100,13 +114,13 @@
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="../index.html">
+                        <a href="../index.php">
                             <i class="material-icons">grid_view</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="clientes.html">
+                        <a href="clientes.php">
                             <i class="material-icons">face</i>
                             <span>Clientes</span>
                         </a>
@@ -118,21 +132,21 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="livros.html">Livros</a>
+                                <a href="livros.php">Livros</a>
                             </li>
                             <li>
-                                <a href="editoras.html">Editoras</a>
+                                <a href="editoras.php">Editoras</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="vendas.html">
+                        <a href="vendas.php">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="funcionarios.html">
+                        <a href="funcionarios.php">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -148,21 +162,21 @@
                                     Funcionários
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="cadFunc.html">Cadastro</a></li>
-                                  <li><a href="cadDep.html">Dependentes</a></li>
+                                  <li><a href="cadFunc.php">Cadastro</a></li>
+                                  <li><a href="cadDep.php">Dependentes</a></li>
                               </ul>
                           </li>
                               <li>
-                                  <a href="cadLivro.html">Livros</a>
+                                  <a href="cadLivro.php">Livros</a>
                               </li>
                               <li>
-                                  <a href="cadEdit.html">Editoras</a>
+                                  <a href="cadEdit.php">Editoras</a>
                               </li>
                               <li>
-                                  <a href="cadCli.html">Clientes</a>
+                                  <a href="cadCli.php">Clientes</a>
                               </li>
                               <li>
-                                  <a href="cadVen.html">Vendas</a>
+                                  <a href="cadVen.php">Vendas</a>
                               </li>
 
                         </ul>
@@ -188,23 +202,30 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                CADASTRO DEPENDENTES
+                                CADASTRO CLIENTES
                             </h2>
                         </div>
                         <div class="body">
 
                             <div class="row clearfix">
-                              <div class="col-md-2">
-                                <b>Funcionário </b>
-                                      <select class="form-control show-tick">
-                                          <option>A</option>
-                                          <option>B</option>
-                                      </select>
-                              </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" class="form-control" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="RG">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="CPF">
                                         </div>
                                     </div>
                                 </div>
@@ -215,17 +236,78 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Relação">
+                                            <input type="text" class="form-control" placeholder="Lograoduro">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="nº">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Complemento">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Bairro">
+                                        </div>
+                                    </div>
                                 </div>
 
+                            </div>
+                            <div class="row clearfix">
+                              <div class="col-md-2">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="Cidade">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="CEP">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-1">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="DDD">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" class="form-control" placeholder="Número">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+                                      <select class="form-control show-tick">
+                                          <option>Fixo</option>
+                                          <option>Celular</option>
+                                      </select>
+                              </div>
+                              <div class="col-md-2">
+                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                              </div>
                             </div>
                         </div>
                     </div>

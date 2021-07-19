@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Livros - VCB</title>
+    <title>Editoras - VCB</title>
 
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
@@ -73,7 +73,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand" href="index.php">VCB - Voodoo Chicken Bookstore</a>
             </div>
 
         </div>
@@ -115,13 +115,13 @@
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="../index.html">
+                        <a href="../index.php">
                             <i class="material-icons">grid_view</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="clientes.html">
+                        <a href="clientes.php">
                             <i class="material-icons">face</i>
                             <span>Clientes</span>
                         </a>
@@ -133,21 +133,21 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="livros.html">Livros</a>
+                                <a href="livros.php">Livros</a>
                             </li>
                             <li>
-                                <a href="editoras.html">Editoras</a>
+                                <a href="editoras.php">Editoras</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="vendas.html">
+                        <a href="vendas.php">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="funcionarios.html">
+                        <a href="funcionarios.php">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -163,21 +163,21 @@
                                     Funcionários
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="cadFunc.html">Cadastro</a></li>
-                                  <li><a href="cadDep.html">Dependentes</a></li>
+                                  <li><a href="cadFunc.php">Cadastro</a></li>
+                                  <li><a href="cadDep.php">Dependentes</a></li>
                               </ul>
                           </li>
                               <li>
-                                  <a href="cadLivro.html">Livros</a>
+                                  <a href="cadLivro.php">Livros</a>
                               </li>
                               <li>
-                                  <a href="cadEdit.html">Editoras</a>
+                                  <a href="cadEdit.php">Editoras</a>
                               </li>
                               <li>
-                                  <a href="cadCli.html">Clientes</a>
+                                  <a href="cadCli.php">Clientes</a>
                               </li>
                               <li>
-                                  <a href="cadVen.html">Vendas</a>
+                                  <a href="cadVen.php">Vendas</a>
                               </li>
 
                         </ul>
@@ -207,7 +207,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                LIVROS
+                                EDITORAS
                             </h2>
 
                         </div>

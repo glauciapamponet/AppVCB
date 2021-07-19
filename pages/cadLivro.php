@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Cadastro Funcionários | VCB</title>
+    <title>Cadastro Livros | VCB</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -75,10 +75,16 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../index.html">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    <!-- <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li> -->
+                    <!-- #END# Call Search -->
+                    <!-- #END# Notifications -->
+                    <!-- Tasks -->
+                    <!-- #END# Tasks -->
                 </ul>
             </div>
         </div>
@@ -90,7 +96,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="..\images/gerente.jpg" width="120" height="120" alt="User" style="margin-top:-12px;">
+                    <img src="..\images\gerente.jpg" width="120" height="120" alt="User" style="margin-top:-12px;">
                 </div>
                 <div class="info-container" style="margin-top:-100px; margin-left:140px;">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -111,13 +117,13 @@
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="../index.html">
+                        <a href="../index.php">
                             <i class="material-icons">grid_view</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="clientes.html">
+                        <a href="clientes.php">
                             <i class="material-icons">face</i>
                             <span>Clientes</span>
                         </a>
@@ -129,21 +135,21 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="livros.html">Livros</a>
+                                <a href="livros.php">Livros</a>
                             </li>
                             <li>
-                                <a href="editoras.html">Editoras</a>
+                                <a href="editoras.php">Editoras</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="vendas.html">
+                        <a href="vendas.php">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="funcionarios.html">
+                        <a href="funcionarios.php">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -159,21 +165,21 @@
                                     Funcionários
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="cadFunc.html">Cadastro</a></li>
-                                  <li><a href="cadDep.html">Dependentes</a></li>
+                                  <li><a href="cadFunc.php">Cadastro</a></li>
+                                  <li><a href="cadDep.php">Dependentes</a></li>
                               </ul>
                           </li>
                               <li>
-                                  <a href="cadLivro.html">Livros</a>
+                                  <a href="cadLivro.php">Livros</a>
                               </li>
                               <li>
-                                  <a href="cadEdit.html">Editoras</a>
+                                  <a href="cadEdit.php">Editoras</a>
                               </li>
                               <li>
-                                  <a href="cadCli.html">Clientes</a>
+                                  <a href="cadCli.php">Clientes</a>
                               </li>
                               <li>
-                                  <a href="cadVen.html">Vendas</a>
+                                  <a href="cadVen.php">Vendas</a>
                               </li>
 
                         </ul>
@@ -199,7 +205,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                CADASTRO FUNCIONARIOS
+                                CADASTRO LIVROS
                             </h2>
                         </div>
                         <div class="body">
@@ -215,103 +221,69 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="RG">
+                                            <input type="text" class="form-control" placeholder="Preço">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="CPF">
+                                            <input type="text" class="form-control" placeholder="Pags">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input class="btn btn-primary btn-sm float-left file-upload-input" type="file">
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Ano Lançamento">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Estoque">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Peso Unit">
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
+
                             <div class="row clearfix">
+                              <div class="col-md-1">
+                              </div>
                               <div class="col-md-2">
-                                <b>Cargo</b>
-                                      <select class="form-control show-tick">
-                                          <option>Gerente</option>
-                                          <option>Caixa</option>
-                                          <option>Estoquista</option>
-                                          <option>Vendedor</option>
+                                <b>Genero(s)</b>
+                                      <select class="form-control show-tick" multiple>
+                                          <option>Ação</option>
+                                          <option>Romance</option>
                                       </select>
                               </div>
                               <div class="col-md-2">
-                                  <b>Turno</b>
-                                  <select class="form-control show-tick">
+                                  <b>Autor(es)</b>
+                                  <select class="form-control show-tick" multiple>
                                       <option>A</option>
                                       <option>B</option>
                                       <option>C</option>
                                   </select>
                               </div>
+                              <div class="col-md-1">
+                              </div>
                               <div class="col-md-4">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="Lograoduro">
-                                      </div>
-                                  </div>
+                                  <input class="btn btn-primary btn-sm float-left file-upload-input" type="file">
                               </div>
                               <div class="col-md-1">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="nº">
-                                      </div>
-                                  </div>
                               </div>
                               <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="CEP">
-                                      </div>
-                                  </div>
+                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
                               </div>
-
-                            </div>
-                            <div class="row clearfix">
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Complemento">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Bairro">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="DDD">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Número">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                        <select class="form-control show-tick">
-                                            <option>Fixo</option>
-                                            <option>Celular</option>
-                                        </select>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                                </div>
-
 
                             </div>
                         </div>

@@ -138,21 +138,21 @@ include_once "conex.php";
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/livros.html">Livros</a>
+                                <a href="pages/livros.php">Livros</a>
                             </li>
                             <li>
-                                <a href="pages/editoras.html">Editoras</a>
+                                <a href="pages/editoras.php">Editoras</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="pages/vendas.html">
+                        <a href="pages/vendas.php">
                             <i class="material-icons">shopping_cart</i>
                             <span>Vendas</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/funcionarios.html">
+                        <a href="pages/funcionarios.php">
                             <i class="material-icons">badge</i>
                             <span>Funcionários</span>
                         </a>
@@ -168,21 +168,21 @@ include_once "conex.php";
                                     Funcionários
                               </a>
                               <ul class="dropdown-menu pull-right">
-                                  <li><a href="pages/cadFunc.html">Cadastro</a></li>
-                                  <li><a href="pages/cadDep.html">Dependentes</a></li>
+                                  <li><a href="pages/cadFunc.php">Cadastro</a></li>
+                                  <li><a href="pages/cadDep.php">Dependentes</a></li>
                               </ul>
                           </li>
                               <li>
-                                  <a href="pages/cadLivro.html">Livros</a>
+                                  <a href="pages/cadLivro.php">Livros</a>
                               </li>
                               <li>
-                                  <a href="pages/cadEdit.html">Editoras</a>
+                                  <a href="pages/cadEdit.php">Editoras</a>
                               </li>
                               <li>
-                                  <a href="pages/cadCli.html">Clientes</a>
+                                  <a href="pages/cadCli.php">Clientes</a>
                               </li>
                               <li>
-                                  <a href="pages/cadVen.html">Vendas</a>
+                                  <a href="pages/cadVen.php">Vendas</a>
                               </li>
 
                         </ul>

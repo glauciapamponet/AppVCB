@@ -206,7 +206,7 @@
                                             <th>Nome</th>
                                             <th>RG</th>
                                             <th>CPF</th>
-                                            <th>Data Nasc</th>
+                                            <th>Data Nascimento</th>
                                             <th>DDD</th>
                                             <th>Numero</th>
                                             <th>Tipo</th>
@@ -219,7 +219,7 @@
                                           <th>Nome</th>
                                           <th>RG</th>
                                           <th>CPF</th>
-                                          <th>Data Nasc</th>
+                                          <th>Data Nascimento</th>
                                           <th>DDD</th>
                                           <th>Numero</th>
                                           <th>Tipo</th>

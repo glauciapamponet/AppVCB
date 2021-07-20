@@ -220,7 +220,7 @@
                         </div>
                         <!-- Cliente-->
                         <div class="body">
-                            <form  action="../docsphp/proc_cadcli.php" method= "POST" target="_blank">
+                            <form action="../docsphp/proc_cadcli.php" method= "POST" >
                                 <div class="row clearfix">
                                     <div class="col-md-4">
                                         <div class="form-group">

@@ -199,7 +199,7 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped listar table-hover">
+                                <table id="user_data" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -210,6 +210,7 @@
                                             <th>DDD</th>
                                             <th>Numero</th>
                                             <th>Tipo</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -222,6 +223,7 @@
                                           <th>DDD</th>
                                           <th>Numero</th>
                                           <th>Tipo</th>
+                                          <th></th>
                                         </tr>
                                     </tfoot>
 
@@ -235,8 +237,79 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" language="javascript" >
+ $(document).ready(function(){
+
+  fetch_data();
+
+  function fetch_data()
+  {
+   var dataTable = $('#user_data').DataTable({
+    "processing" : true,
+    "serverSide" : true,
+    "order" : [],
+    "ajax" : {
+     url:"../docsphp/clientes/fetch.php",
+     type:"POST"
+    }
+   });
+  }
+
+  function update_data(id, column_name, value)
+  {
+   $.ajax({
+    url:"../docsphp/clientes/update.php",
+    method:"POST",
+    data:{id:id, column_name:column_name, value:value},
+    success:function(data)
+    {
+     $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+     $('#user_data').DataTable().destroy();
+     fetch_data();
+    }
+   });
+   setInterval(function(){
+    $('#alert_message').html('');
+   }, 5000);
+  }
+
+  $(document).on('blur', '.update', function(){
+   var id = $(this).data("id");
+   var column_name = $(this).data("column");
+   var value = $(this).text();
+   update_data(id, column_name, value);
+  });
+
+
+  $(document).on('click', '.delete', function(){
+   var id = $(this).attr("id");
+   if(confirm("Tem certeza?"))
+   {
+    $.ajax({
+     url:"../docsphp/clientes/delete.php",
+     method:"POST",
+     data:{id:id},
+     success:function(data){
+      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+      $('#user_data').DataTable().destroy();
+      fetch_data();
+     }
+    });
+    setInterval(function(){
+     $('#alert_message').html('');
+    }, 5000);
+   }
+  });
+ });
+</script>
+
+    <!-- <script src="../plugins/jquery/jquery.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript">
 		$(document).ready(function() {
 			$('.listar').DataTable({
@@ -248,7 +321,7 @@
 				}
 			});
 		} );
-		</script>
+		</script> -->
 
     <!-- Bootstrap Core Js -->
     <script src="../plugins/bootstrap/js/bootstrap.js"></script>

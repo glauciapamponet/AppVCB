@@ -276,63 +276,61 @@
                                 CADASTRO REPRESENTANTE
                             </h2>
                         </div>
-                        <form action="../docsphp/proc_cadedi.php" method= "POST">
-                        <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-md-2">
-                                <b>Editora </b>
-                                    <select name="select_editora" class="form-control show-tick">
-                                        <option value="">Selecione</option>
-                                        <?php 
-                                            $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
-                                            //$resultado_editoras = mysqli_querry($conex, $result_editoras); 
-                                            //while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
-                                             //   echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
-                                            //} 
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
+                        <form action="../docsphp/proc_cadrepedit.php" method= "POST">
+                            <div class="body">
+                                <div class="row clearfix">
+                                    <div class="col-md-2">
+                                    <b>Editora </b>
+                                        <select name="select_editora" class="form-control show-tick" size=1>
+                                            <option value="">Selecione</option>
+                                            <?php 
+                                                $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
+                                                $resultado_editoras = mysqli_query($conex, $result_editoras); 
+                                                while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
+                                                echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
+                                                } 
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="nomerepr" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="cargo" type="text" class="form-control" placeholder="Cargo" maxlength="25" required="required"> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="emailrepr" type="mail" class="form-control" placeholder="e-mail" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="telefonerepre" type="text" class="form-control" placeholder="Telefone" maxlength="20"  required="required">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Cargo">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="e-mail">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Telefone">
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
-
                             <div class="row clearfix">
-                              <div class="col-md-10">
-
-                              </div>
-                              <div class="col-md-1">
-                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                              </div>
+                                <div class="col-md-10">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect" style="bottom: 30px">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

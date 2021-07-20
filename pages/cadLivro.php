@@ -246,8 +246,6 @@
                             </div>
 
                             <div class="row clearfix">
-                              <div class="col-md-1">
-                              </div>
                               <div class="col-md-2">
                                 <b>Genero(s)</b>
                                       <select class="form-control show-tick" multiple>
@@ -263,9 +261,16 @@
                                       <option>C</option>
                                   </select>
                               </div>
-                              <div class="col-md-1">
+                              <div class="col-md-2">
+                                  <b>Editora</b>
+                                  <select class="form-control show-tick" size=1>
+                                      <option>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</option>
+                                      <option>B</option>
+                                      <option>C</option>
+                                  </select>
                               </div>
-                              <div class="col-md-4">
+
+                              <div class="col-md-3">
                                   <input class="btn btn-primary btn-sm float-left file-upload-input" type="file">
                               </div>
                               <div class="col-md-1">
@@ -274,6 +279,31 @@
                                   <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
                               </div>
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                CADASTRO AUTORES
+                            </h2>
+                        </div>
+                        <div class="body">
+
+                            <div class="row clearfix">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                </div>
                             </div>
                         </div>
                     </div>

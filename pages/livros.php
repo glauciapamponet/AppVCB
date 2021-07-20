@@ -8,29 +8,21 @@
 
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="../plugins/fontawsome/all.css" rel="stylesheet">
-
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
-
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
-
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
-
     <!-- JQuery DataTable Css -->
     <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
@@ -97,14 +89,6 @@
                         <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
 
-
-
-                    <!-- <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sair</a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
             <!-- #User Info -->
@@ -190,9 +174,6 @@
             </div>
             <!-- #Footer -->
         </aside>
-        <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
@@ -219,6 +200,7 @@
                                           <th>Preço</th>
                                           <th>Editora</th>
                                           <th>Qtd Páginas</th>
+                                          <th>Loc</th>
                                           <th>Qtd Estoque</th>
                                           <!-- <th>Capa</th> -->
                                           <th></th>
@@ -231,6 +213,7 @@
                                         <th>Preço</th>
                                         <th>Editora</th>
                                         <th>Qtd Páginas</th>
+                                        <th>Loc</th>
                                         <th>Qtd Estoque</th>
                                         <!-- <th>Capa</th> -->
                                         <th></th>
@@ -294,7 +277,6 @@
        update_data(id, column_name, value);
       });
 
-
       $(document).on('click', '.delete', function(){
        var id = $(this).attr("id");
        if(confirm("Tem certeza?"))
@@ -319,8 +301,6 @@
 
     <!-- Bootstrap Core Js -->
     <script src="../plugins/bootstrap/js/bootstrap.js"></script>
-    <!-- Select Plugin Js -->
-    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
     <!-- Jquery DataTable Plugin Js -->
@@ -330,5 +310,4 @@
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
 </body>
-
 </html>

@@ -2,10 +2,10 @@
 <?php
 //fetch.php
 $connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
-$columns = array('lv.idlivros', 'lv.nomelivro', 'lv.precolivro', 'ed.nomeedit', 'lv.qtdpaglivro', 'lv.qtdestoque', 'lv.capalivro');
+$columns = array('lv.idlivros', 'lv.nomelivro', 'lv.precolivro', 'ed.nomeedit', 'lv.qtdpaglivro','locest', 'lv.qtdestoque', 'lv.capalivro');
 
-$query = "SELECT lv.idlivros, lv.nomelivro, lv.precolivro, ed.nomeedit, lv.qtdpaglivro, lv.qtdestoque, lv.capalivro
-FROM livros lv INNER JOIN editoras ed ON lv.idedit = ed.ideditoras ";
+$query = "SELECT lv.idlivros, lv.nomelivro, lv.precolivro, ed.nomeedit, lv.qtdpaglivro, CONCAT(lest.corredorest, lest.estanteest) as locest, lv.qtdestoque, lv.capalivro
+FROM livros lv LEFT JOIN editoras ed ON lv.idedit = ed.ideditoras LEFT JOIN locestoque lest ON lest.idlivro = lv.idlivros";
 
 if(isset($_POST["search"]["value"]))
 {
@@ -15,6 +15,7 @@ if(isset($_POST["search"]["value"]))
  OR lv.precolivro LIKE "%'.$_POST["search"]["value"].'%"
  OR ed.nomeedit LIKE "%'.$_POST["search"]["value"].'%"
  OR lv.qtdpaglivro LIKE "%'.$_POST["search"]["value"].'%"
+ OR locest LIKE "%'.$_POST["search"]["value"].'%"
  OR lv.qtdestoque LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
@@ -50,6 +51,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["idlivros"].'" data-column="precolivro">' . $row["precolivro"] . '</div>';
  $sub_array[] = '<div  data-id="'.$row["idlivros"].'" data-column="nomeedit">' . $row["nomeedit"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["idlivros"].'" data-column="qtdpaglivro">' . $row["qtdpaglivro"] . '</div>';
+ $sub_array[] = '<div data-id="'.$row["idlivros"].'" data-column="locest">' . $row["locest"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["idlivros"].'" data-column="qtdestoque">' . $row["qtdestoque"] . '</div>';
  // $sub_array[] = '<div data-id="'.$row["idlivros"].'" data-column="capalivro">' . $row["capalivro"] . '</div>';
  $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="'.$row["idlivros"].'">Delete</button>';
@@ -58,8 +60,8 @@ while($row = mysqli_fetch_array($result))
 
 function get_all_data($connect)
 {
- $query = "SELECT lv.idlivros, lv.nomelivro, lv.precolivro, ed.nomeedit, lv.qtdpaglivro, lv.qtdestoque, lv.capalivro
- FROM livros lv INNER JOIN editoras ed ON lv.idedit = ed.ideditoras";
+ $query = "SELECT lv.idlivros, lv.nomelivro, lv.precolivro, ed.nomeedit, lv.qtdpaglivro, CONCAT(lest.corredorest, lest.estanteest) as locest, lv.qtdestoque, lv.capalivro
+FROM livros lv LEFT JOIN editoras ed ON lv.idedit = ed.ideditoras LEFT JOIN locestoque lest ON lest.idlivro = lv.idlivros";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }

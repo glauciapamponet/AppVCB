@@ -278,7 +278,6 @@
                         </div>
                         <form action="../docsphp/proc_cadedi.php" method= "POST">
                         <div class="body">
-
                             <div class="row clearfix">
                                 <div class="col-md-2">
                                 <b>Editora </b>
@@ -286,7 +285,7 @@
                                         <option value="">Selecione</option>
                                         <?php 
                                             $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
-                                            $resultado_editoras = mysqli_querry($conex, $result_editoras); 
+                                            //$resultado_editoras = mysqli_querry($conex, $result_editoras); 
                                             //while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
                                              //   echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
                                             //} 

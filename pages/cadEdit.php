@@ -281,7 +281,7 @@
                                 <div class="row clearfix">
                                     <div class="col-md-2">
                                     <b>Editora </b>
-                                        <select name="select_editora" class="form-control show-tick" size=1>
+                                        <select name="select_editora" class="form-control show-tick">
                                             <option value="">Selecione</option>
                                             <?php 
                                                 $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";

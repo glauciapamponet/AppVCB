@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include_once ("../conex.php");
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -276,13 +280,19 @@
                         <div class="body">
 
                             <div class="row clearfix">
-                              <div class="col-md-2">
+                                <div class="col-md-2">
                                 <b>Editora </b>
-                                      <select class="form-control show-tick">
-                                          <option>A</option>
-                                          <option>B</option>
-                                      </select>
-                              </div>
+                                    <select name="select_editora" class="form-control show-tick">
+                                        <option value="">Selecione</option>
+                                        <?php 
+                                            $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
+                                            $resultado_editoras = mysqli_querry($conex, $result_editoras); 
+                                            //while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
+                                             //   echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
+                                            //} 
+                                        ?>
+                                    </select>
+                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <div class="form-line">

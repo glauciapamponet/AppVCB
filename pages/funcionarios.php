@@ -202,25 +202,37 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table id="user_dataf" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <table id="user_dataf" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>RG</th>
+                                            <th>CPF</th>
+                                            <th>Cargo</th>
+                                            <th>Turno</th>
+                                            <th>Início</th>
+                                            <th>Fim</th>
+                                            <th>Salário</th>
+                                            <th>Estoque</th>
+                                            <th>Comissão</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>RG</th>
+                                            <th>CPF</th>
+                                            <th>Cargo</th>
+                                            <th>Turno</th>
+                                            <th>Início</th>
+                                            <th>Fim</th>
+                                            <th>Salário</th>
+                                            <th>Estoque</th>
+                                            <th>Comissão</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -273,41 +285,60 @@
     <script type="text/javascript" language="javascript" >
      $(document).ready(function(){
 
-      fetch_data("#user_dataf");
-      fetch_data("#user_datad");
+      fetch_dataf();
 
-      function fetch_data(dataid)
-      {
-       var dataTable = $(dataid).DataTable({
+      function fetch_dataf()  {
+       var dataTable = $('#user_dataf').DataTable({
         "processing" : true,
         "serverSide" : true,
         "order" : [],
         "ajax" : {
-        if (dataid == "#user_dataf") {
-          url:"../docsphp/funcionarios/fetch.php",
-        }else{
-          url:"../docsphp/dependentes/fetch.php",
-        }
+         url:"../docsphp/funcionarios/fetch.php",
          type:"POST"
         }
        });
       }
 
-      function update_data(id, column_name, value, dataid)
+      function fetch_datad(){
+        var dataTable = $('#user_datad').DataTable({
+         "processing" : true,
+         "serverSide" : true,
+         "order" : [],
+         "ajax" : {
+          url:"../docsphp/dependentes/fetch.php",
+          type:"POST"
+         }
+        });
+      }
+
+      function update_dataf(id, column_name, value)
       {
        $.ajax({
-       if (dataid == "#user_dataf") {
-         url:"../docsphp/funcionarios/update.php",
-       }else{
-         url:"../docsphp/dependentes/update.php",
-       }
+        url:"../docsphp/funcionarios/update.php",
         method:"POST",
         data:{id:id, column_name:column_name, value:value},
         success:function(data)
         {
          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-         $(dataid).DataTable().destroy();
-         fetch_data(dataid);
+         $('#user_data').DataTable().destroy();
+         fetch_dataf();
+        }
+       });
+       setInterval(function(){
+        $('#alert_message').html('');
+       }, 5000);
+      }
+      function update_datad(id, column_name, value)
+      {
+       $.ajax({
+        url:"../docsphp/dependentes/update.php",
+        method:"POST",
+        data:{id:id, column_name:column_name, value:value},
+        success:function(data)
+        {
+         $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+         $('#user_datad').DataTable().destroy();
+         fetch_datad();
         }
        });
        setInterval(function(){
@@ -315,21 +346,21 @@
        }, 5000);
       }
 
-      $(document).on('blur', '.updateFunc', function(){
+      $(document).on('blur', '.updatef', function(){
        var id = $(this).data("id");
        var column_name = $(this).data("column");
        var value = $(this).text();
-       update_data(id, column_name, value, "#user_dataf");
+       update_dataf(id, column_name, value);
       });
 
-      $(document).on('blur', '.updateDep', function(){
+      $(document).on('blur', '.updated', function(){
        var id = $(this).data("id");
        var column_name = $(this).data("column");
        var value = $(this).text();
-       update_data(id, column_name, value, "#user_datad");
+       update_datad(id, column_name, value);
       });
 
-      $(document).on('click', '.deleteFunc', function(){
+      $(document).on('click', '.deletef', function(){
        var id = $(this).attr("id");
        if(confirm("Tem certeza?"))
        {
@@ -340,7 +371,7 @@
          success:function(data){
           $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
           $('#user_dataf').DataTable().destroy();
-          fetch_data("#user_dataf");
+          fetch_dataf();
          }
         });
         setInterval(function(){
@@ -349,7 +380,7 @@
        }
       });
 
-      $(document).on('click', '.deleteDep', function(){
+      $(document).on('click', '.deleted', function(){
        var id = $(this).attr("id");
        if(confirm("Tem certeza?"))
        {
@@ -360,7 +391,7 @@
          success:function(data){
           $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
           $('#user_datad').DataTable().destroy();
-          fetch_data("#user_datad");
+          fetch_datad();
          }
         });
         setInterval(function(){
@@ -368,6 +399,9 @@
         }, 5000);
        }
       });
+
+
+
      });
     </script>
 

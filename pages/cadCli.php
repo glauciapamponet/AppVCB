@@ -325,7 +325,6 @@
                                 <div class="col-md-2">
                                     <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
                                 </div>
-                                </div>
                             </form>
                         </div>
                     </div>

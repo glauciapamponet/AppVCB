@@ -1,6 +1,5 @@
 <?php
-
-    include("../conex.php");
+    include_once("../conex.php");
 
     //Inserção em 'clientes'
     $nomecli = filter_input (INPUT_POST, 'nomecli', FILTER_SANITIZE_STRING);
@@ -10,7 +9,6 @@
 
     $cad_cli = "INSERT INTO clientes (nomecli, rgcli, cpfcli, datanascim) VALUES ('$nomecli', '$rgcli', '$cpfcli', '$datanascim');";
     $result_cli = mysqli_query ($conex, $cad_cli);
-
     $pega_idcli = "SELECT idclientes FROM clientes WHERE nomecli= '$nomecli'";
     $selectid = mysqli_query ($conex, $pega_idcli);
     $idcli = mysqli_fetch_array($selectid);
@@ -38,7 +36,10 @@
     $cad_telcli = "INSERT INTO telecli (dddcli, numerocli, tipotelci, idcli) VALUES ('$dddcli', '$numerotelcli', '$tipotelcli', '$idcli[idclientes]');";
     $result_cli = mysqli_query ($conex, $cad_telcli);
 
-
+    if(mysqli_insert_id($conex)){
+        header("Location: ../pages/cadCli.php");
+    }
+    
     //echo "nome: $nomecli= <br>";
     //echo "rg: $rgcli <br>";
     //echo "cpf: $cpfcli <br>";

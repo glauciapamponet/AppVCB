@@ -25,9 +25,9 @@
     }
     $result_endcli = mysqli_query ($conex, $cad_endcli);
 
-    //if(mysqli_insert_id($conex)){
-    //    header("Location: ../pages/cadEdit.php");
-    //}
+    if(mysqli_insert_id($conex)){
+        header("Location: ../pages/cadEdit.php");
+    }
     
     echo "logradouro: $logradouroedit <br>";
     echo "bairro: $bairroedit <br>";

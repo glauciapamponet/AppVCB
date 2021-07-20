@@ -5,7 +5,7 @@ $connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
 $columns = array('c.idclientes', 'c.nomecli', 'c.rgcli', 'c.cpfcli', 'c.datanascim', 'tc.dddcli', 'tc.numerocli', 'tc.tipotelci');
 
 $query = "SELECT c.idclientes, c.nomecli, c.rgcli, c.cpfcli, c.datanascim, tc.dddcli, tc.numerocli, tc.tipotelci
-FROM clientes c INNER JOIN telecli tc ON c.idclientes = tc.idcli ";
+FROM clientes c LEFT JOIN telecli tc ON c.idclientes = tc.idcli ";
 
 if(isset($_POST["search"]["value"]))
 {
@@ -55,14 +55,14 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["idclientes"].'" data-column="dddcli">' . $row["dddcli"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["idclientes"].'" data-column="numerocli">' . $row["numerocli"] . '</div>';
  $sub_array[] = '<div contenteditable class="update" data-id="'.$row["idclientes"].'" data-column="tipotelci">' . $row["tipotelci"] . '</div>';
- $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs delete" idclientes="'.$row["idclientes"].'">Delete</button>';
+ $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="'.$row["idclientes"].'">Delete</button>';
  $data[] = $sub_array;
 }
 
 function get_all_data($connect)
 {
  $query = "SELECT c.idclientes, c.nomecli, c.rgcli, c.cpfcli, c.datanascim, tc.dddcli, tc.numerocli, tc.tipotelci
- FROM clientes c INNER JOIN telecli tc ON c.idclientes = tc.idcli";
+ FROM clientes c LEFT JOIN telecli tc ON c.idclientes = tc.idcli";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }

@@ -5,32 +5,23 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Clientes - VCB</title>
-
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="../plugins/fontawsome/all.css" rel="stylesheet">
-
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
-
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
-
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
-
     <!-- JQuery DataTable Css -->
     <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 
@@ -58,17 +49,6 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="PESQUISAR...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -183,8 +163,6 @@
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
@@ -236,119 +214,86 @@
             <!-- #END# Basic Examples -->
         </div>
     </section>
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" language="javascript" >
+     $(document).ready(function(){
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" language="javascript" >
- $(document).ready(function(){
-
-  fetch_data();
-
-  function fetch_data()
-  {
-   var dataTable = $('#user_data').DataTable({
-    "processing" : true,
-    "serverSide" : true,
-    "order" : [],
-    "ajax" : {
-     url:"../docsphp/clientes/fetch.php",
-     type:"POST"
-    }
-   });
-  }
-
-  function update_data(id, column_name, value)
-  {
-   $.ajax({
-    url:"../docsphp/clientes/update.php",
-    method:"POST",
-    data:{id:id, column_name:column_name, value:value},
-    success:function(data)
-    {
-     $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-     $('#user_data').DataTable().destroy();
-     fetch_data();
-    }
-   });
-   setInterval(function(){
-    $('#alert_message').html('');
-   }, 5000);
-  }
-
-  $(document).on('blur', '.update', function(){
-   var id = $(this).data("id");
-   var column_name = $(this).data("column");
-   var value = $(this).text();
-   update_data(id, column_name, value);
-  });
-
-
-  $(document).on('click', '.delete', function(){
-   var id = $(this).attr("id");
-   if(confirm("Tem certeza?"))
-   {
-    $.ajax({
-     url:"../docsphp/clientes/delete.php",
-     method:"POST",
-     data:{id:id},
-     success:function(data){
-      $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-      $('#user_data').DataTable().destroy();
       fetch_data();
-     }
-    });
-    setInterval(function(){
-     $('#alert_message').html('');
-    }, 5000);
-   }
-  });
- });
-</script>
 
-    <!-- <script src="../plugins/jquery/jquery.min.js"></script> -->
-    <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript">
-		$(document).ready(function() {
-			$('.listar').DataTable({
-				"processing": true,
-				"serverSide": true,
-				"ajax": {
-					"url": "../docsphp/proc_pesq_cli.php",
-					"type": "POST"
-				}
-			});
-		} );
-		</script> -->
+      function fetch_data()
+      {
+       var dataTable = $('#user_data').DataTable({
+        "processing" : true,
+        "serverSide" : true,
+        "order" : [],
+        "ajax" : {
+         url:"../docsphp/clientes/fetch.php",
+         type:"POST"
+        }
+       });
+      }
+
+      function update_data(id, column_name, value)
+      {
+       $.ajax({
+        url:"../docsphp/clientes/update.php",
+        method:"POST",
+        data:{id:id, column_name:column_name, value:value},
+        success:function(data)
+        {
+         $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+         $('#user_data').DataTable().destroy();
+         fetch_data();
+        }
+       });
+       setInterval(function(){
+        $('#alert_message').html('');
+       }, 5000);
+      }
+
+      $(document).on('blur', '.update', function(){
+       var id = $(this).data("id");
+       var column_name = $(this).data("column");
+       var value = $(this).text();
+       update_data(id, column_name, value);
+      });
+
+
+      $(document).on('click', '.delete', function(){
+       var id = $(this).attr("id");
+       if(confirm("Tem certeza?"))
+       {
+        $.ajax({
+         url:"../docsphp/clientes/delete.php",
+         method:"POST",
+         data:{id:id},
+         success:function(data){
+          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+          $('#user_data').DataTable().destroy();
+          fetch_data();
+         }
+        });
+        setInterval(function(){
+         $('#alert_message').html('');
+        }, 5000);
+       }
+      });
+     });
+    </script>
 
     <!-- Bootstrap Core Js -->
     <script src="../plugins/bootstrap/js/bootstrap.js"></script>
-
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
-
-    <!-- Editable Table Plugin Js -->
-    <script src="../plugins/editable-table/mindmup-editabletable.js"></script>
-    <script src="../plugins/editable-table/bstable.js"></script>
-
     <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
-    <!-- <script src="../js/pages/tables/jquery-datatable.js"></script> -->
-    <script src="../js/pages/tables/editable-table.js"></script>
-    <script src="../js/pages/tables/editable.js"></script>
-
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
 </body>

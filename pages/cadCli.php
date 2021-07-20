@@ -220,7 +220,11 @@
                         </div>
                         <!-- Cliente-->
                         <div class="body">
+<<<<<<< HEAD
                             <form  action="../docsphp/proc_cadcli.php" method= "POST">
+=======
+                            <form action="../docsphp/proc_cadcli.php" method= "POST">
+>>>>>>> 8406fe37c8be98fb16eb6a0b42ef5baa3b7049a2
                                 <div class="row clearfix">
                                     <div class="col-md-4">
                                         <div class="form-group">

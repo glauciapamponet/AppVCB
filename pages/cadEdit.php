@@ -35,7 +35,7 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
-
+    
     <script type="text/javascript">
         function formatar_mascara(src, mascara) {
             var campo = src.value.length;
@@ -46,7 +46,6 @@
             }
         }
     </script>
-
 </head>
 
 <body class="theme-black">
@@ -198,70 +197,74 @@
                                 CADASTRO EDITORAS
                             </h2>
                         </div>
+                        <form action="../docsphp/proc_cadedi.php" method= "POST">
                         <div class="body">
-                            <form action="../docsphp/proc_cadedi.php" method= "POST">
-                                <div class="row clearfix">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="nomeedit" class="form-control" placeholder="Nome" maxlength="45" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="logradouroedit" nameclass="form-control" placeholder="Lograoduro" maxlength="45" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="numeroedit" class="form-control" placeholder="nº" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="bairroedit" class="form-control" placeholder="Bairro" maxlength=20 required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="cidadeedit" class="form-control" placeholder="Cidade" maxlength=20 required="required">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" name="cepedit" class="form-control" placeholder="CEP" maxlength="9" required="required" onkeypress="formatar_mascara(this,'#####-###')">
-                                        </div>
-                                    </div>
-                                </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="complemento" class="form-control" placeholder="Complemento" maxlength="45">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="row clearfix">
                                 <div class="col-md-3">
-                                </div>
-                                    <div class="col-md-1">
-                                        <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="nomeedit" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="logradouroedit" class="form-control" placeholder="Logradouro" maxlength="45" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="numeroedit" class="form-control" placeholder="nº" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="bairroedit" class="form-control" placeholder="Bairro" maxlength="20" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row clearfix">
+                              <div class="col-md-2">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" name="cidadeedit" class="form-control" placeholder="Cidade" maxlength="20" required="required">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-2">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                          <input type="text" name="cepedit" class="form-control" placeholder="CEP" maxlength="9" required="required" onkeypress="formatar_mascara(this,'#####-###')">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <div class="form-line">
+                                            <input type="text" name="complemento" class="form-control" placeholder="Complemento" maxlength="45">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-3">
+
+                              </div>
+                              <div class="col-md-1">
+                                <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
+                              </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
+
+            </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -269,57 +272,61 @@
                                 CADASTRO REPRESENTANTE
                             </h2>
                         </div>
+                        <form action="../docsphp/proc_cadedi.php" method= "POST">
                         <div class="body">
-                            <form action="../docsphp/proc_cadrepedi.php" method= "POST">
-                                <div class="row clearfix">
+
+                            <div class="row clearfix">
+                              <div class="col-md-2">
+                                <b>Editora </b>
+                                      <select class="form-control show-tick">
+                                          <option>A</option>
+                                          <option>B</option>
+                                      </select>
+                              </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Cargo">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-2">
-                                    <b>Editora </b>
-                                        <select class="form-control show-tick">
-                                            <option>A</option>
-                                            <option>B</option>
-                                        </select>
-                                </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="nomerep" class="form-control" placeholder="Nome" maxlength="45" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Cargo" required="required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="E-mail">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" placeholder="Telefone">
-                                            </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="e-mail">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row clearfix">
-                                    <div class="col-md-10">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Telefone">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                                </div>
+
+
                             </div>
-                        </form>
+
+                            <div class="row clearfix">
+                              <div class="col-md-10">
+
+                              </div>
+                              <div class="col-md-1">
+                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                              </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
             <!-- #END# Multi Column -->
         </div>
     </section>

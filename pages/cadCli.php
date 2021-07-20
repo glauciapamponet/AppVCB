@@ -220,7 +220,7 @@
                         </div>
                         <!-- Cliente-->
                         <div class="body">
-                            <form  action="proc_cadcli.php" method= "POST" target="_blank">
+                            <form  action="../docsphp/proc_cadcli.php" method= "POST" target="_blank">
                                 <div class="row clearfix">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -324,7 +324,6 @@
                                 <!-- END Endereço Cliente-->
                                 <div class="col-md-2">
                                     <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
-                                </div>
                                 </div>
                             </form>
                         </div>

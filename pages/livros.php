@@ -305,6 +305,8 @@
     <script src="../plugins/node-waves/waves.js"></script>
     <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <!-- Demo Js -->

@@ -203,33 +203,33 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
+                                            <input name="nomefunc" type="text" class="form-control" placeholder="Nome">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="RG">
+                                            <input name="RGfunc" type="text" class="form-control" placeholder="RG">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="CPF">
+                                            <input name="cpffunc" type="text" class="form-control" placeholder="CPF">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="btn btn-primary btn-sm float-left file-upload-input" type="file">
+                                    <input name="foto" class="btn btn-primary btn-sm float-left file-upload-input" type="file">
                                 </div>
 
                             </div>
                             <div class="row clearfix">
                               <div class="col-md-2">
                                 <b>Cargo</b>
-                                      <select class="form-control show-tick">
+                                      <select name="cargo" class="form-control show-tick">
                                           <option>Gerente</option>
                                           <option>Caixa</option>
                                           <option>Estoquista</option>
@@ -238,30 +238,30 @@
                               </div>
                               <div class="col-md-2">
                                   <b>Turno</b>
-                                  <select class="form-control show-tick">
-                                      <option>A</option>
-                                      <option>B</option>
-                                      <option>C</option>
+                                  <select name="turno" class="form-control show-tick">
+                                      <option>Integral</option>
+                                      <option>Matutino</option>
+                                      <option>Noturno</option>
                                   </select>
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
                                       <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="Lograoduro">
+                                          <input name="logradourofunc" type="text" class="form-control" placeholder="Lograoduro">
                                       </div>
                                   </div>
                               </div>
                               <div class="col-md-1">
                                   <div class="form-group">
                                       <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="nº">
+                                          <input name="numerofunc" type="text" class="form-control" placeholder="nº">
                                       </div>
                                   </div>
                               </div>
                               <div class="col-md-2">
                                   <div class="form-group">
                                       <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="CEP">
+                                          <input name="cepfunc" type="text" class="form-control" placeholder="CEP">
                                       </div>
                                   </div>
                               </div>
@@ -272,14 +272,14 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Complemento">
+                                            <input name="complemento" type="text" class="form-control" placeholder="Complemento">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Bairro">
+                                            <input name="bairrofunc" type="text" class="form-control" placeholder="Bairro">
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include_once ("../conex.php");
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -35,6 +39,18 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function formatar_mascara(src, mascara) {
+            var campo = src.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(campo);
+            if(texto.substring(0,1) != saida) {
+                src.value += texto.substring(0,1);
+            }
+        }
+    </script>
+
 </head>
 
 <body class="theme-black">
@@ -197,90 +213,115 @@
                                 CADASTRO LIVROS
                             </h2>
                         </div>
-                        <div class="body">
-
-                            <div class="row clearfix">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
+                        <form action="../docsphp/proc_cadlivro.php" method="POST" enctype="multipart/form-data">
+                            <div class="body">
+                            <!--idlivros, nomelivro, precolivro, qtdpaglivro, anolanclivro, idedit, capalivro, qtdestoque, pesounitkg-->
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="nomelivro" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="precolivro" type="text" class="form-control" placeholder="Preço" onkeypress="formatar_mascara(this,'##.##')" maxlength="5" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="qtdpaglivro" type="text" class="form-control" placeholder="Pags" maxlength="4" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="anolanclivro" type="text" class="form-control" placeholder="Ano Lançamento" maxlength="4" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="qtdestoque" type="text" class="form-control" placeholder="Estoque" maxlength="4" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="pesounitkg" type="text" class="form-control" placeholder="Peso Unit" onkeypress="formatar_mascara(this,'#.##')" maxlength="4" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="corredor" type="text" class="form-control" placeholder="Corredor" maxlength="2" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="estante" type="text" class="form-control" placeholder="Estante" maxlength="4" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                <div class="col-md-2">
+                                    <b>Genero(s)</b>
+                                    <select name="select_genero" class="form-control show-tick" multiple>
+                                        <?php 
+                                            $result_genero = "SELECT idgenero, nome FROM genero";
+                                            $resultado_genero = mysqli_query($conex, $result_genero); 
+                                            while($row_genero = mysqli_fetch_assoc($resultado_genero)) { 
+                                                echo '<option value ="'.$row_genero[idgenero].'">'.$row_genero[nome].'</option>';
+                                            } 
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Preço">
-                                        </div>
-                                    </div>
+                                    <b>Autor(es)</b>
+                                    <select name="select_autores" class="form-control show-tick" multiple>
+                                        <?php 
+                                            $result_autores = "SELECT idautores, nome FROM autores";
+                                            $resultado_autores = mysqli_query($conex, $result_autores); 
+                                            while($row_autores = mysqli_fetch_assoc($resultado_autores)) { 
+                                                echo '<option value ="'.$row_autores[idautores].'">'.$row_autores[nome].'</option>';
+                                            } 
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <b>Editora</b>
+                                    <select name="select_editora" class="form-control show-tick">
+                                        <?php 
+                                            $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
+                                            $resultado_editoras = mysqli_query($conex, $result_editoras); 
+                                            while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
+                                                echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <input name="imagem" class="btn btn-primary btn-sm float-left file-upload-input" type="file" required="required">
                                 </div>
                                 <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Pags">
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Ano Lançamento">
-                                        </div>
-                                    </div>
+                                <div class="col-md-2">
+                                    <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Estoque">
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Peso Unit">
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-
-                            <div class="row clearfix">
-                              <div class="col-md-2">
-                                <b>Genero(s)</b>
-                                      <select class="form-control show-tick" multiple>
-                                          <option>Ação</option>
-                                          <option>Romance</option>
-                                      </select>
-                              </div>
-                              <div class="col-md-2">
-                                  <b>Autor(es)</b>
-                                  <select class="form-control show-tick" multiple>
-                                      <option>A</option>
-                                      <option>B</option>
-                                      <option>C</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-2">
-                                  <b>Editora</b>
-                                  <select class="form-control show-tick" size=1>
-                                      <option>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</option>
-                                      <option>B</option>
-                                      <option>C</option>
-                                  </select>
-                              </div>
-
-                              <div class="col-md-3">
-                                  <input class="btn btn-primary btn-sm float-left file-upload-input" type="file">
-                              </div>
-                              <div class="col-md-1">
-                              </div>
-                              <div class="col-md-2">
-                                  <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                              </div>
-
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="card">
                         <div class="header">

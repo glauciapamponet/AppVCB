@@ -29,7 +29,7 @@
         header("Location: ../pages/cadEdit.php");
     }
     
-    echo "logradouro: $logradouroedit <br>";
-    echo "bairro: $bairroedit <br>";
-    echo "cidade: $cidadeedit <br>";
+    //echo "logradouro: $logradouroedit <br>";
+    //echo "bairro: $bairroedit <br>";
+    //echo "cidade: $cidadeedit <br>";
 ?>

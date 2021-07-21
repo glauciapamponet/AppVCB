@@ -282,12 +282,11 @@
                                     <div class="col-md-2">
                                     <b>Editora </b>
                                         <select name="select_editora" class="form-control show-tick">
-                                            <option value="">Selecione</option>
                                             <?php 
                                                 $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
                                                 $resultado_editoras = mysqli_query($conex, $result_editoras); 
                                                 while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
-                                                echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
+                                                    echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
                                                 } 
                                             ?>
                                         </select>

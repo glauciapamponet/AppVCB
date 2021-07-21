@@ -62,7 +62,7 @@ function showConfirmMessage() {
     });
 }
 
-function showCancelMessage() {
+function showCancelMessage() {//esse aqui!!
     swal({
         title: "Are you sure?",
         text: "You will not be able to recover this imaginary file!",
@@ -72,7 +72,7 @@ function showCancelMessage() {
         confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, cancel plx!",
         closeOnConfirm: false,
-        closeOnCancel: false
+        closeOnCancel: true
     }, function (isConfirm) {
         if (isConfirm) {
             swal("Deleted!", "Your imaginary file has been deleted.", "success");

@@ -24,6 +24,7 @@
 
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
@@ -70,10 +71,11 @@
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
-            <img src="../favicon.ico" width="70" height="70" style="margin-left:-365px;">
+          <img class="navbar-left" src="../favicon3.png" width="60px" height="55px" style="align=right; margin-top:5px">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php" style= "margin-left: 50px">VCB - Voodoo Chicken Bookstore</a>
+                <a class="navbar-brand navbar-left" href="../index.php" style= "margin-left: -10px">VCB - Voodoo Chicken Bookstore</a>
             </div>
+
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -93,7 +95,7 @@
                       <div style="magin-top:-10px"><h6 style="margin:0px;">Gerente</h6></div>
                       </div>
                     <!-- <div class="email">rihanna@vcb.com</div> -->
-                    <div class="" style="margin-top: 10px; text-align: right; margin-right:-8px;" >
+                    <div class="" style="margin-top: 30px; text-align: right; margin-right:-8px;" >
                         <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
 
@@ -250,22 +252,22 @@
                                 <table id="user_datad" class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Data Nascimento</th>
+                                            <th>Relação</th>
+                                            <th>Responsável</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                          <th>ID</th>
+                                          <th>Nome</th>
+                                          <th>Data Nascimento</th>
+                                          <th>Relação</th>
+                                          <th>Responsável</th>
+                                          <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -283,9 +285,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" language="javascript" >
+
      $(document).ready(function(){
 
       fetch_dataf();
+      fetch_datad();
 
       function fetch_dataf()  {
        var dataTable = $('#user_dataf').DataTable({
@@ -320,14 +324,16 @@
         success:function(data)
         {
          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-         $('#user_data').DataTable().destroy();
+         $('#user_dataf').DataTable().destroy();
          fetch_dataf();
         }
+
        });
        setInterval(function(){
         $('#alert_message').html('');
        }, 5000);
       }
+
       function update_datad(id, column_name, value)
       {
        $.ajax({
@@ -344,6 +350,31 @@
        setInterval(function(){
         $('#alert_message').html('');
        }, 5000);
+      }
+
+      function showCancelMessage() {//esse aqui!!
+          var res;
+          swal({
+              title: "Tem certeza?",
+              text: "Olha lá o que vai fazer, ein!",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#ff4600",
+              confirmButtonText: "Sim, deleta ae!",
+              cancelButtonText: "Não, plmds!",
+              closeOnConfirm: false,
+              closeOnCancel: true
+          }, function (isConfirm) {
+              if (isConfirm) {
+                  swal("Deletado!", "Esse foi com Deus.", "success");
+                  res = true;
+              } else {
+                  res = false;
+              }
+          });
+          res = false;
+          alert(res);
+          return res;
       }
 
       $(document).on('blur', '.updatef', function(){
@@ -382,29 +413,38 @@
 
       $(document).on('click', '.deleted', function(){
        var id = $(this).attr("id");
-       if(confirm("Tem certeza?"))
-       {
-        $.ajax({
-         url:"../docsphp/dependentes/delete.php",
-         method:"POST",
-         data:{id:id},
-         success:function(data){
-          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-          $('#user_datad').DataTable().destroy();
-          fetch_datad();
+       swal({
+           title: "Tem certeza?",
+           text: "Olha lá o que vai fazer, ein!",
+           type: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#ff4600",
+           confirmButtonText: "Sim, deleta ae!",
+           cancelButtonText: "Não, plmds!",
+           closeOnConfirm: false,
+           closeOnCancel: true,
+       }).then(function(isConfirm) {
+         if(isConfirm) {
+          $.ajax({
+           url:"../docsphp/dependentes/delete.php",
+           method:"POST",
+           data:{id:id},
+           success:function(data){
+            swal("Deletado!", "Esse foi com Deus.", "success");
+            $('#user_datad').DataTable().destroy();
+            fetch_datad();
+           }
+          });
          }
-        });
-        setInterval(function(){
-         $('#alert_message').html('');
-        }, 5000);
-       }
+       });
+
+
       });
-
-
-
      });
     </script>
 
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../plugins/bootstrap-notify/bootstrap-notify.js"></script>
     <!-- Bootstrap Core Js -->
     <script src="../plugins/bootstrap/js/bootstrap.js"></script>
     <!-- Waves Effect Plugin Js -->

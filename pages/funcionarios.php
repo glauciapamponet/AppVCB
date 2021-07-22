@@ -386,7 +386,7 @@
            method:"POST",
            data:{id:id},
            success:function(data){
-            swal("Deletado!", "Esse foi com Deus.", "success");
+            swal("Deletado!", "Esse foi pro além.", "success");
             $('#user_dataf').DataTable().destroy();
             fetch_dataf();
            }
@@ -416,7 +416,7 @@
            method:"POST",
            data:{id:id},
            success:function(data){
-            swal("Deletado!", "Esse foi com Deus.", "success");
+            swal("Deletado!", "Esse foi pro além.", "success");
             $('#user_datad').DataTable().destroy();
             fetch_datad();
            }

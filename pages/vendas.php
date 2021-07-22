@@ -228,174 +228,38 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive ">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <table id="user_data" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>ID</th>
+                                            <th>Itens</th>
+                                            <th>Total</th>
+                                            <th>Cliente</th>
+                                            <th>Data</th>
+                                            <th>Pagamento</th>
+                                            <th>Caixa</th>
+                                            <th>Vendedor</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>ID</th>
+                                            <th>Itens</th>
+                                            <th>Total</th>
+                                            <th>Cliente</th>
+                                            <th>Data</th>
+                                            <th>Pagamento</th>
+                                            <th>Caixa</th>
+                                            <th>Vendedor</th>
                                             <th></th>
                                         </tr>
+                                        <tr>
+                                          <th colspan="6"></th>
+                                         <th >Total: </th>
+                                         <th colspan="2" id="total_order"></th>
+                                        </tr>
                                     </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>39</td>
-                                            <td>2009/09/15</td>
-                                            <td>$205,500</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sonya Frost</td>
-                                            <td>Software Engineer</td>
-                                            <td>Edinburgh</td>
-                                            <td>23</td>
-                                            <td>2008/12/13</td>
-                                            <td>$103,600</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jena Gaines</td>
-                                            <td>Office Manager</td>
-                                            <td>London</td>
-                                            <td>30</td>
-                                            <td>2008/12/19</td>
-                                            <td>$90,560</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quinn Flynn</td>
-                                            <td>Support Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2013/03/03</td>
-                                            <td>$342,000</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Charde Marshall</td>
-                                            <td>Regional Director</td>
-                                            <td>San Francisco</td>
-                                            <td>36</td>
-                                            <td>2008/10/16</td>
-                                            <td>$470,600</td>
-                                            <td><div class="js-sweetalert">
-                                              <button class="btn btn-primary waves-effect" data-type="html-message">Detalhes</button>
-                                            </div> </td>
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -406,49 +270,62 @@
         </div>
     </section>
 
-
-
-    <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" language="javascript" >
+     $(document).ready(function(){
+
+      fetch_data();
+
+      function fetch_data(){
+       var dataTable = $('#user_data').DataTable({
+        "processing" : true,
+        "serverSide" : true,
+        "order" : [],
+        "ajax" : {
+         url:"../docsphp/vendas/fetch.php",
+         type:"POST"
+       },
+       drawCallback:function(settings){
+         $('#total_order').html(settings.json.total);
+       }
+       });
+      }
+
+      $(document).on('click', '.delete', function(){
+       var id = $(this).attr("id");
+       if(confirm("Tem certeza?"))
+       {
+        $.ajax({
+         url:"../docsphp/vendas/delete.php",
+         method:"POST",
+         data:{id:id},
+         success:function(data){
+          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+          $('#user_data').DataTable().destroy();
+          fetch_data();
+         }
+        });
+        setInterval(function(){
+         $('#alert_message').html('');
+        }, 5000);
+       }
+      });
+     });
+    </script>
 
     <!-- Bootstrap Core Js -->
     <script src="../plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Select Plugin Js -->
-    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Bootstrap Notify Plugin Js -->
-    <script src="../plugins/bootstrap-notify/bootstrap-notify.js"></script>
-
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
-
-    <!-- Editable Table Plugin Js -->
-    <script src="../plugins/editable-table/mindmup-editabletable.js"></script>
-
-    <!-- SweetAlert Plugin Js -->
-    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
-
-
     <!-- Jquery DataTable Plugin Js -->
-    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
-    <script src="../js/pages/ui/dialogs.js"></script>
-    <script src="../js/pages/tables/jquery-datatable.js"></script>
-
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
 </body>

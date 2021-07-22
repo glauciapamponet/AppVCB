@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include_once ("../conex.php");
+    session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -36,6 +41,8 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
     <script type="text/javascript">
         function formatar_mascara(src, mascara) {
             var campo = src.value.length;
@@ -45,6 +52,21 @@
                 src.value += texto.substring(0,1);
             }
         }
+        function showWithCustomIconMessage() {
+            swal({
+                title: "Sucesso!",
+                text: "Cadastro concluído.",
+                imageUrl: "../../images/thumbs-up.png"
+            });
+        }
+        function showErrorMensage() {
+            swal({
+                title: "Erro",
+                text: "Cadastro não foi efetuado.",
+                imageUrl: "../../images/sad.png"
+            });
+        }
+
     </script>
 
 </head>
@@ -219,6 +241,20 @@
                                 CADASTRO CLIENTES
                             </h2>
                         </div>
+                        <?php 
+                            if(isset($_SESSION['msg'])){?>
+                                <script>showWithCustomIconMessage();</script>
+                                <?php
+                                unset ($_SESSION['msg']);
+                            }
+                        ?>
+                        <?php 
+                            if(isset($_SESSION['erro'])){?>
+                                <script>showErrorMensage();</script>
+                                <?php
+                                unset ($_SESSION['erro']);
+                            }
+                        ?>
                         <!-- Cliente-->
                         <div class="body">
                             <form action="../docsphp/proc_cadcli.php" method= "POST">

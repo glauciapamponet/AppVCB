@@ -1,5 +1,6 @@
 <?php
     include_once("../conex.php");
+    session_start();
 
     //Inserção em 'editoras'
     $nomeedit = filter_input (INPUT_POST, 'nomeedit');
@@ -26,7 +27,11 @@
     $result_endcli = mysqli_query ($conex, $cad_endcli);
 
     if(mysqli_insert_id($conex)){
-        header("Location: ../pages/cadEdit.php");
+        $_SESSION['msg'] = "Cadastro feito com sucesso!";
+        header("Location: ../pages/cadLivro.php");
+    } else{
+        $_SESSION['erro'] = "ERRO";
+        header("Location: ../pages/cadLivro.php");
     }
     
     //echo "logradouro: $logradouroedit <br>";

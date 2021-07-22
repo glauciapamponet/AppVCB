@@ -217,7 +217,7 @@
                                             <th>Fim</th>
                                             <th>Salário</th>
                                             <th>Estoque</th>
-                                            <th>Comissão</th>
+                                            <th>%</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -233,7 +233,7 @@
                                             <th>Fim</th>
                                             <th>Salário</th>
                                             <th>Estoque</th>
-                                            <th>Comissão</th>
+                                            <th>%</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
@@ -352,31 +352,6 @@
        }, 5000);
       }
 
-      function showCancelMessage() {//esse aqui!!
-          var res;
-          swal({
-              title: "Tem certeza?",
-              text: "Olha lá o que vai fazer, ein!",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#ff4600",
-              confirmButtonText: "Sim, deleta ae!",
-              cancelButtonText: "Não, plmds!",
-              closeOnConfirm: false,
-              closeOnCancel: true
-          }, function (isConfirm) {
-              if (isConfirm) {
-                  swal("Deletado!", "Esse foi com Deus.", "success");
-                  res = true;
-              } else {
-                  res = false;
-              }
-          });
-          res = false;
-          alert(res);
-          return res;
-      }
-
       $(document).on('blur', '.updatef', function(){
        var id = $(this).data("id");
        var column_name = $(this).data("column");
@@ -393,22 +368,32 @@
 
       $(document).on('click', '.deletef', function(){
        var id = $(this).attr("id");
-       if(confirm("Tem certeza?"))
-       {
-        $.ajax({
-         url:"../docsphp/funcionarios/delete.php",
-         method:"POST",
-         data:{id:id},
-         success:function(data){
-          $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
-          $('#user_dataf').DataTable().destroy();
-          fetch_dataf();
+       swal({
+           title: "Tem certeza?",
+           text: "Olha lá o que vai fazer, ein!",
+           type: "warning",
+           showCancelButton: true,
+           showConfirmButton: true,
+           confirmButtonColor: "#ff4600",
+           confirmButtonText: "Sim, deleta ae!",
+           cancelButtonText: "Não, plmds!",
+           closeOnConfirm: false,
+           closeOnCancel: true,
+       },function(isConfirm) {
+         if(isConfirm) {
+          $.ajax({
+           url:"../docsphp/funcionarios/delete.php",
+           method:"POST",
+           data:{id:id},
+           success:function(data){
+            swal("Deletado!", "Esse foi com Deus.", "success");
+            $('#user_dataf').DataTable().destroy();
+            fetch_dataf();
+           }
+          });
          }
-        });
-        setInterval(function(){
-         $('#alert_message').html('');
-        }, 5000);
-       }
+       });
+
       });
 
       $(document).on('click', '.deleted', function(){
@@ -424,7 +409,7 @@
            cancelButtonText: "Não, plmds!",
            closeOnConfirm: false,
            closeOnCancel: true,
-       }).then(function(isConfirm) {
+       },function(isConfirm) {
          if(isConfirm) {
           $.ajax({
            url:"../docsphp/dependentes/delete.php",

@@ -77,12 +77,13 @@
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
-            <img src="favicon.ico" width="70" height="70" style="margin-left:-365px;">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php" style= "margin-left: 50px">VCB - Voodoo Chicken Bookstore</a>
-            </div>
-        </div>
+      <div class="container-fluid">
+        <img class="navbar-left" src="../favicon3.png" width="60px" height="55px" style="align=right; margin-top:5px">
+          <div class="navbar-header">
+              <a class="navbar-brand navbar-left" href="../index.php" style= "margin-left: -10px">VCB - Voodoo Chicken Bookstore</a>
+          </div>
+
+      </div>
     </nav>
     <!-- #Top Bar -->
     <section>
@@ -192,9 +193,6 @@
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
-                <!-- <div class="copyright">
-                    &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
-                </div> -->
                 <div class="version">
                     <b>Version: </b> 1.0
                 </div>
@@ -202,9 +200,6 @@
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-
-        <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">

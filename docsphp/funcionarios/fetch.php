@@ -64,7 +64,7 @@ while($row = mysqli_fetch_array($result))
  if($row["comissaovend"] == 0.00) {$sub_array[] = '<div class="label bg-black" data-id="'.$row["idfuncionarios"].'" data-column="comissaovend">Não Tem</div>'; }
  else {$sub_array[] = '<div contenteditable class="updatef" data-id="'.$row["idfuncionarios"].'" data-column="comissaovend">' . $row["comissaovend"] . '</div>';}
  // $sub_array[] = '<div data-id="'.$row["idlivros"].'" data-column="capalivro">' . $row["capalivro"] . '</div>';
- $sub_array[] = '<button type="button" name="deletef" class="btn btn-danger btn-xs deleteFunc" id="'.$row["idfuncionarios"].'">Delete</button>';
+ $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs deletef" id="'.$row["idfuncionarios"].'">Delete</button>';
  $data[] = $sub_array;
 }
 

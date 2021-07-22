@@ -10,11 +10,6 @@
     $cargo = filter_input (INPUT_POST, 'cargo');
     $turno = filter_input (INPUT_POST, 'turno');
 
-    //echo "nome: $nomefunc= <br>";
-    //echo "rg: $RGfunc <br>";
-    //echo "cpf: $cpffunc <br>";
-    //echo "cargo: $cargo <br>";
-    //echo "turno: $turno <br>";
     //idfuncionarios, nomefunc, RGfunc, cpffunc, foto, idcargo, idturno
     $cad_func = "INSERT INTO funcionarios (nomefunc, RGfunc, cpffunc, foto, idcargo, idturno) VALUES ('$nomefunc', '$RGfunc', '$cpffunc', '1', $cargo, $turno);";
     //$result_func = mysqli_query ($conex, $cad_func); //certo, mas testar dnv
@@ -23,13 +18,13 @@
     $idfunc = mysqli_fetch_array($selectid);
 
     //Inserção em 'vendedor' ou 'estoquista'
-    $corredorestoque = filter_input (INPUT_POST, 'corredorestoque');
-    $comissaovnd = filter_input (INPUT_POST, 'comissaovend');
     
-    if (!$comissaovend && $corredorestoque){
+    if ($cargo==3){
+        $corredorestoque = filter_input (INPUT_POST, 'corredorestoque');
         $cad_cargo = "INSERT INTO estoquista (funcionarios_idfuncionarios, corredorestoque) VALUES ('$idfunc[idfuncionarios]', '$corredorestoque');";    
         echo "estoquista";
-    }else if (!$comissaovend){  //
+    }else if ($cargo==4){ 
+        $comissaovend = filter_input (INPUT_POST, 'comissaovend');
         $cad_cargo = "INSERT INTO vendedor (funcionarios_idfuncionarios, comissaovend) VALUES ('$idfunc[idfuncionarios]', '$comissaovend');";    
         echo "vendedor";
     }
@@ -54,10 +49,10 @@
     //Inserção em 'telefunc'
     $dddfunc = filter_input (INPUT_POST, 'dddfunc');
     $numerotelfunc = filter_input (INPUT_POST, 'numerofunc');
-    $tipotelefunc = filter_input (INPUT_POST, 'tipotelefunc');
+    $tipo = filter_input (INPUT_POST, 'tipo');
 
-    echo "<br>$tipotelefunc<br>";
-    $cad_telfunc = "INSERT INTO telefunc (dddfunc, numerofunc, tipotelefunc, idfunc) VALUES ('$dddfunc', '$numerotelfunc', '$tipotelefunc', '$idfunc[idfuncionarios]');";
+    echo "<br>$tipo<br>";
+    $cad_telfunc = "INSERT INTO telefunc (dddfunc, numerofunc, tipotelefunc, idfunc) VALUES ('$dddfunc', '$numerotelfunc', '$tipo', '$idfunc[idfuncionarios]');";
     //$result_func = mysqli_query ($conex, $cad_telfunc);
 
     if(mysqli_insert_id($conex)){

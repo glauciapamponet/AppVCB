@@ -69,12 +69,13 @@
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
-            <img src="../favicon.ico" width="70" height="70" style="margin-left:-365px;">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php" style= "margin-left: 50px">VCB - Voodoo Chicken Bookstore</a>
-            </div>
-        </div>
+      <div class="container-fluid">
+        <img class="navbar-left" src="../favicon3.png" width="60px" height="55px" style="align=right; margin-top:5px">
+          <div class="navbar-header">
+              <a class="navbar-brand navbar-left" href="../index.php" style= "margin-left: -10px">VCB - Voodoo Chicken Bookstore</a>
+          </div>
+
+      </div>
     </nav>
     <!-- #Top Bar -->
     <section>
@@ -93,7 +94,7 @@
                       <div style="magin-top:-10px"><h6 style="margin:0px;">Gerente</h6></div>
                       </div>
                     <!-- <div class="email">rihanna@vcb.com</div> -->
-                    <div class="" style="margin-top: 10px; text-align: right; margin-right:-8px;" >
+                    <div class="" style="margin-top: 30px; text-align: right; margin-right:-8px;" >
                         <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
 
@@ -177,7 +178,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="version">
-                    <b>Version: </b> 1.0.5
+                    <b>Version: </b> 1.0
                 </div>
             </div>
             <!-- #Footer -->

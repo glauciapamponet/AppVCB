@@ -73,7 +73,7 @@
     <!-- Top Bar -->
     <nav class="navbar">
       <div class="container-fluid">
-        <img class="navbar-left" src="../favicon2.png" width="68px" height="63px" style="align=right; margin-top:5px">
+        <img class="navbar-left" src="../favicon3.png" width="60px" height="55px" style="align=right; margin-top:5px">
           <div class="navbar-header">
               <a class="navbar-brand navbar-left" href="../index.php" style= "margin-left: -10px">VCB - Voodoo Chicken Bookstore</a>
           </div>
@@ -189,7 +189,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="version">
-                    <b>Version: </b> 1.0.5
+                    <b>Version: </b> 1.0
                 </div>
             </div>
             <!-- #Footer -->

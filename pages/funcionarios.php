@@ -179,7 +179,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="version">
-                    <b>Version: </b> 1.0.5
+                    <b>Version: </b> 1.0
                 </div>
             </div>
             <!-- #Footer -->
@@ -418,6 +418,7 @@
            text: "Olha lá o que vai fazer, ein!",
            type: "warning",
            showCancelButton: true,
+           showConfirmButton: true,
            confirmButtonColor: "#ff4600",
            confirmButtonText: "Sim, deleta ae!",
            cancelButtonText: "Não, plmds!",

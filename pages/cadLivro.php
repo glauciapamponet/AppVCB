@@ -87,12 +87,13 @@
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
-            <img src="../favicon.ico" width="70" height="70" style="margin-left:-365px;">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php" style= "margin-left: 50px">VCB - Voodoo Chicken Bookstore</a>
-            </div>
-        </div>
+      <div class="container-fluid">
+        <img class="navbar-left" src="../favicon3.png" width="60px" height="55px" style="align=right; margin-top:5px">
+          <div class="navbar-header">
+              <a class="navbar-brand navbar-left" href="../index.php" style= "margin-left: -10px">VCB - Voodoo Chicken Bookstore</a>
+          </div>
+
+      </div>
     </nav>
     <!-- #Top Bar -->
     <section>
@@ -111,7 +112,7 @@
                       <div style="magin-top:-10px"><h6 style="margin:0px;">Gerente</h6></div>
                       </div>
                     <!-- <div class="email">rihanna@vcb.com</div> -->
-                    <div class="" style="margin-top: 13px; text-align: right; margin-right:-8px;" >
+                    <div class="" style="margin-top: 30px; text-align: right; margin-right:-8px;" >
                         <a href="javascript:void(0);"><i  class="material-icons" style="color:white; font-size:18px;">logout</i></a>
                     </div>
                 </div>
@@ -194,7 +195,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="version">
-                    <b>Version: </b> 1.0.5
+                    <b>Version: </b> 1.0
                 </div>
             </div>
             <!-- #Footer -->
@@ -278,34 +279,34 @@
                                 <div class="col-md-2">
                                     <b>Genero(s)</b>
                                     <select name="select_genero" class="form-control show-tick" multiple>
-                                        <?php 
+                                        <?php
                                             $result_genero = "SELECT idgenero, nome FROM genero";
-                                            $resultado_genero = mysqli_query($conex, $result_genero); 
-                                            while($row_genero = mysqli_fetch_assoc($resultado_genero)) { 
+                                            $resultado_genero = mysqli_query($conex, $result_genero);
+                                            while($row_genero = mysqli_fetch_assoc($resultado_genero)) {
                                                 echo '<option value ="'.$row_genero[idgenero].'">'.$row_genero[nome].'</option>';
-                                            } 
+                                            }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
                                     <b>Autor(es)</b>
                                     <select name="select_autores" class="form-control show-tick" multiple>
-                                        <?php 
+                                        <?php
                                             $result_autores = "SELECT idautores, nome FROM autores";
-                                            $resultado_autores = mysqli_query($conex, $result_autores); 
-                                            while($row_autores = mysqli_fetch_assoc($resultado_autores)) { 
+                                            $resultado_autores = mysqli_query($conex, $result_autores);
+                                            while($row_autores = mysqli_fetch_assoc($resultado_autores)) {
                                                 echo '<option value ="'.$row_autores[idautores].'">'.$row_autores[nome].'</option>';
-                                            } 
+                                            }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="col-md-2">
                                     <b>Editora</b>
                                     <select name="select_editora" class="form-control show-tick">
-                                        <?php 
+                                        <?php
                                             $result_editoras = "SELECT ideditoras, nomeedit FROM editoras";
-                                            $resultado_editoras = mysqli_query($conex, $result_editoras); 
-                                            while($row_editora = mysqli_fetch_assoc($resultado_editoras)) { 
+                                            $resultado_editoras = mysqli_query($conex, $result_editoras);
+                                            while($row_editora = mysqli_fetch_assoc($resultado_editoras)) {
                                                 echo '<option value ="'.$row_editora[ideditoras].'">'.$row_editora[nomeedit].'</option>';
                                             }
                                         ?>

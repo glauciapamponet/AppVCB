@@ -68,6 +68,7 @@ function showCancelMessage() {//esse aqui!!
         text: "You will not be able to recover this imaginary file!",
         type: "warning",
         showCancelButton: true,
+        showConfirmButton: true,
         confirmButtonColor: "#DD6B55",
         confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, cancel plx!",

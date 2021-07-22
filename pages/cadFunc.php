@@ -388,11 +388,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div name="tipotelefunc" class="col-md-2">
-                                            <select class="form-control show-tick">
-                                                <option value="Fixo">Fixo</option>
-                                                <option value="Celular">Celular</option>
-                                            </select>
+                                    <div name="tipo" class="col-md-2">
+                                        <select class="form-control show-tick">
+                                            <option value='Fixo'>Fixo</option>
+                                            <option value='Celular'>Celular</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-1">
                                         <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">

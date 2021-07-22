@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include_once ("../conex.php");
+    session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -35,6 +40,34 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
+    
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+        function formatar_mascara(src, mascara) {
+            var campo = src.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(campo);
+            if(texto.substring(0,1) != saida) {
+                src.value += texto.substring(0,1);
+            }
+        }
+        function showWithCustomIconMessage() {
+            swal({
+                title: "Sucesso!",
+                text: "Cadastro concluído.",
+                imageUrl: "../../images/thumbs-up.png"
+            });
+        }
+        function showErrorMensage() {
+            swal({
+                title: "Erro",
+                text: "Cadastro não foi efetuado.",
+                imageUrl: "../../images/sad.png"
+            });
+        }
+
+    </script>
 </head>
 
 <body class="theme-black">
@@ -68,7 +101,7 @@
 
       </div>
     </nav>
-                <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
+            <a class="navbar-brand" href="../index.php">VCB - Voodoo Chicken Bookstore</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -195,42 +228,62 @@
                                 CADASTRO DEPENDENTES
                             </h2>
                         </div>
+                        <?php 
+                            if(isset($_SESSION['msg'])){?>
+                                <script>showWithCustomIconMessage();</script>
+                                <?php
+                                unset ($_SESSION['msg']);
+                            }
+                        ?>
+                        <?php 
+                            if(isset($_SESSION['erro'])){?>
+                                <script>showErrorMensage();</script>
+                                <?php
+                                unset ($_SESSION['erro']);
+                            }
+                        ?>
                         <div class="body">
-
-                            <div class="row clearfix">
-                              <div class="col-md-2">
-                                <b>Funcionário </b>
-                                      <select class="form-control show-tick">
-                                          <option>A</option>
-                                          <option>B</option>
-                                      </select>
-                              </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
-                                        </div>
-                                    </div>
-                                </div>
+                            <form action="../docsphp/proc_caddep.php" method= "POST">
+                                <div class="row clearfix">
                                 <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Data Nascimento">
+                                    <b>Funcionário </b>
+                                        <select name="select_funcionario" class="form-control show-tick">
+                                            <?php
+                                                $result_funcionarios = "SELECT idfuncionarios, nomefunc FROM funcionarios";
+                                                $resultado_funcionarios = mysqli_query($conex, $result_funcionarios);
+                                                while($row_funcionarios = mysqli_fetch_assoc($resultado_funcionarios)) {
+                                                    echo '<option value ="'.$row_funcionarios[idfuncionarios].'">'.$row_funcionarios[nomefunc].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="nome" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required" autofocus>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Relação">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="datanasc" type="date" class="form-control" placeholder="Data Nascimento" maxlength="10" required="required">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                                </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="relacao" type="text" class="form-control" placeholder="Relação" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
+                                    </div>
 
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

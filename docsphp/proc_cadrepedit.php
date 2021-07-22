@@ -1,6 +1,7 @@
 <?php
     include_once("../conex.php");
-
+    session_start();
+    
     //Inserção em 'represedit'
     $nomerepr = filter_input (INPUT_POST, 'nomerepr', FILTER_SANITIZE_STRING);
     $cargo = filter_input (INPUT_POST, 'cargo');
@@ -13,12 +14,11 @@
     $result_rep = mysqli_query ($conex, $cad_rep);
 
     if(mysqli_insert_id($conex)){
-        header("Location: ../pages/cadCli.php");
+        $_SESSION['msg'] = "Cadastro feito com sucesso!";
+        header("Location: ../pages/cadEdit.php");
+    } else{
+        $_SESSION['erro'] = "ERRO";
+        header("Location: ../pages/cadEdit.php");
     }
-    echo "nomerepr: $nomerepr <br>";
-    echo "cargo: $cargo <br>";
-    echo "emailrepr: $emailrepr <br>";
-    echo "telefonerepre: $telefonerepre <br>";
-    echo "editora: $select_editora <br>";
-    
+
 ?>

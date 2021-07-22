@@ -28,10 +28,10 @@
 
     if(mysqli_insert_id($conex)){
         $_SESSION['msg'] = "Cadastro feito com sucesso!";
-        header("Location: ../pages/cadLivro.php");
+        header("Location: ../pages/cadEdit.php");
     } else{
         $_SESSION['erro'] = "ERRO";
-        header("Location: ../pages/cadLivro.php");
+        header("Location: ../pages/cadEdit.php");
     }
     
     //echo "logradouro: $logradouroedit <br>";

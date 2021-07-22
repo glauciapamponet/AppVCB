@@ -240,7 +240,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nomeedit" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                            <input type="text" name="nomeedit" class="form-control" placeholder="Nome" maxlength="45" required="required" autofocus>
                                         </div>
                                     </div>
                                 </div>

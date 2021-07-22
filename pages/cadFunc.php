@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include_once ("../conex.php");
+    session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -35,6 +40,58 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+    
+    <script type="text/javascript">
+        $(function () {
+            $("#dropdown").change(function () {
+                if ($(this).val() == 4) {
+                    $("#textV").removeAttr("disabled");
+                    $("#textV").attr("required", "required");
+                    $("#textE").attr("disabled", "disabled");
+                    $("#textV").focus();
+                    $("#textE").val('');
+                } else if ($(this).val() == 3) {
+                    $("#textE").removeAttr("disabled");
+                    $("#textE").attr("required", "required");
+                    $("#textV").attr("disabled", "disabled");
+                    $("#textE").focus();
+                    $("#textV").val('');
+                }  else{
+                    $("#textE").attr("disabled", "disabled");
+                    $("#textV").attr("disabled", "disabled");
+                    $("#textE").removeAttr("required");
+                    $("#textV").removeAttr("required");
+                }
+            });
+        });
+        function formatar_mascara(src, mascara) {
+            var campo = src.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(campo);
+            if(texto.substring(0,1) != saida) {
+                src.value += texto.substring(0,1);
+            }
+        }
+        function showWithCustomIconMessage() {
+            swal({
+                title: "Sucesso!",
+                text: "Cadastro concluído.",
+                imageUrl: "../../images/thumbs-up.png"
+            });
+        }
+        function showErrorMensage() {
+            swal({
+                title: "Erro",
+                text: "Cadastro não foi efetuado.",
+                imageUrl: "../../images/sad.png"
+            });
+        }
+    </script>
+
 </head>
 
 <body class="theme-black">
@@ -198,118 +255,150 @@
                                 CADASTRO FUNCIONARIOS
                             </h2>
                         </div>
+                        <?php 
+                            if(isset($_SESSION['msg'])){?>
+                                <script>showWithCustomIconMessage();</script>
+                                <?php
+                                unset ($_SESSION['msg']);
+                            }
+                        ?>
+                        <?php 
+                            if(isset($_SESSION['erro'])){?>
+                                <script>showErrorMensage();</script>
+                                <?php
+                                unset ($_SESSION['erro']);
+                            }
+                        ?>
                         <div class="body">
-
-                            <div class="row clearfix">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input name="nomefunc" type="text" class="form-control" placeholder="Nome">
+                            <form action="../docsphp/proc_cadfunc.php" method= "POST">
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="nomefunc" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required" autofocus>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input name="RGfunc" type="text" class="form-control" placeholder="RG">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="RGfunc" type="text" class="form-control" placeholder="RG" onkeypress="formatar_mascara(this,'##.###.###-#')" maxlength="12"  required="required">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input name="cpffunc" type="text" class="form-control" placeholder="CPF">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="cpffunc" type="text" class="form-control" placeholder="CPF" onkeypress="formatar_mascara(this,'###.###.###-##')" maxlength="14"  required="required">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <input name="foto" class="btn btn-primary btn-sm float-left file-upload-input" type="file">
-                                </div>
-
-                            </div>
-                            <div class="row clearfix">
-                              <div class="col-md-2">
-                                <b>Cargo</b>
-                                      <select name="cargo" class="form-control show-tick">
-                                          <option>Gerente</option>
-                                          <option>Caixa</option>
-                                          <option>Estoquista</option>
-                                          <option>Vendedor</option>
-                                      </select>
-                              </div>
-                              <div class="col-md-2">
-                                  <b>Turno</b>
-                                  <select name="turno" class="form-control show-tick">
-                                      <option>Integral</option>
-                                      <option>Matutino</option>
-                                      <option>Noturno</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input name="logradourofunc" type="text" class="form-control" placeholder="Lograoduro">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-1">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input name="numerofunc" type="text" class="form-control" placeholder="nº">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input name="cepfunc" type="text" class="form-control" placeholder="CEP">
-                                      </div>
-                                  </div>
-                              </div>
-
-                            </div>
-                            <div class="row clearfix">
-
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input name="complemento" type="text" class="form-control" placeholder="Complemento">
-                                        </div>
+                                    <div class="col-md-3">
+                                        <input name="foto" class="btn btn-primary btn-sm float-left file-upload-input" type="file">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input name="bairrofunc" type="text" class="form-control" placeholder="Bairro">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="DDD">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Número">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                        <select class="form-control show-tick">
-                                            <option>Fixo</option>
-                                            <option>Celular</option>
+                                <div class="row clearfix">
+                                    <div class="col-md-2">
+                                        <b>Cargo</b>
+                                        <select name="cargo" id='dropdown' class="form-control show-tick">
+                                                <option value = 1>Gerente</option>
+                                                <option value = 2>Caixa</option>
+                                                <option value = 3>Estoquista</option>
+                                                <option value = 4>Vendedor</option>
                                         </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Turno</b>
+                                        <select name="turno" class="form-control show-tick">
+                                            <option value = 1>Integral</option>
+                                            <option value = 2>Matutino</option>
+                                            <option value = 3>Noturno</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="corredorestoque" id='textE' type="text" class="form-control" placeholder="Corredor" onkeypress="formatar_mascara(this,'#-#-#-#-#')" maxlength="9" disabled=True>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="comissaovend" id='textV' type="text" class="form-control" placeholder="Comissão" onkeypress="formatar_mascara(this,'#.##')" maxlength="4" disabled= True>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="logradourofunc" type="text" class="form-control" placeholder="Lograoduro" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="numerofunc" type="text" class="form-control" placeholder="nº" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="cepfunc" type="text" class="form-control" placeholder="CEP" maxlength="9" required="required" onkeypress="formatar_mascara(this,'#####-###')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="complemento" type="text" class="form-control" placeholder="Complemento" maxlength="45">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="bairrofunc" type="text" class="form-control" placeholder="Bairro" maxlength="20" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="cidadefunc" type="text" class="form-control" placeholder="Cidade" maxlength="25" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="dddfunc" type="text" class="form-control" placeholder="DDD" maxlength="3" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="numerofunc" type="text" class="form-control" placeholder="Número" maxlength="9" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div name="tipo" class="col-md-2">
+                                        <select class="form-control show-tick">
+                                            <option value='Fixo'>Fixo</option>
+                                            <option value='Celular'>Celular</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
+                                    </div>
                                 </div>
-
-
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

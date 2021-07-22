@@ -1,5 +1,6 @@
 <?php
     include_once("../conex.php");
+    session_start();
 
     //Inserção em 'clientes'
     $nomecli = filter_input (INPUT_POST, 'nomecli', FILTER_SANITIZE_STRING);
@@ -37,6 +38,10 @@
     $result_cli = mysqli_query ($conex, $cad_telcli);
 
     if(mysqli_insert_id($conex)){
+        $_SESSION['msg'] = "Cadastro feito com sucesso!";
+        header("Location: ../pages/cadCli.php");
+    } else{
+        $_SESSION['erro'] = "ERRO";
         header("Location: ../pages/cadCli.php");
     }
     

@@ -1,5 +1,6 @@
 ﻿<?php
     include_once ("../conex.php");
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +41,10 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 
+    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
     <script type="text/javascript">
         function formatar_mascara(src, mascara) {
             var campo = src.value.length;
@@ -49,6 +54,21 @@
                 src.value += texto.substring(0,1);
             }
         }
+        function showWithCustomIconMessage() {
+            swal({
+                title: "Sucesso!",
+                text: "Cadastro concluído.",
+                imageUrl: "../../images/thumbs-up.png"
+            });
+        }
+        function showErrorMensage() {
+            swal({
+                title: "Erro",
+                text: "Cadastro não foi efetuado.",
+                imageUrl: "../../images/sad.png"
+            });
+        }
+
     </script>
 
 </head>
@@ -214,6 +234,20 @@
                                 CADASTRO LIVROS
                             </h2>
                         </div>
+                        <?php 
+                            if(isset($_SESSION['msg'])){?>
+                                <script>showWithCustomIconMessage();</script>
+                                <?php
+                                unset ($_SESSION['msg']);
+                            }
+                        ?>
+                        <?php 
+                            if(isset($_SESSION['erro'])){?>
+                                <script>showErrorMensage();</script>
+                                <?php
+                                unset ($_SESSION['erro']);
+                            }
+                        ?>
                         <form action="../docsphp/proc_cadlivro.php" method="POST" enctype="multipart/form-data">
                             <div class="body">
                             <!--idlivros, nomelivro, precolivro, qtdpaglivro, anolanclivro, idedit, capalivro, qtdestoque, pesounitkg-->
@@ -221,7 +255,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input name="nomelivro" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                                <input name="nomelivro" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required" autofocus>
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +312,7 @@
                                 <div class="row clearfix">
                                 <div class="col-md-2">
                                     <b>Genero(s)</b>
-                                    <select name="select_genero" class="form-control show-tick" multiple>
+                                    <select name="select_genero[]" class="form-control show-tick" multiple>
                                         <?php
                                             $result_genero = "SELECT idgenero, nome FROM genero";
                                             $resultado_genero = mysqli_query($conex, $result_genero);
@@ -290,7 +324,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <b>Autor(es)</b>
-                                    <select name="select_autores" class="form-control show-tick" multiple>
+                                    <select name="select_autores[]" class="form-control show-tick" multiple>
                                         <?php
                                             $result_autores = "SELECT idautores, nome FROM autores";
                                             $resultado_autores = mysqli_query($conex, $result_autores);
@@ -330,23 +364,38 @@
                                 CADASTRO AUTORES
                             </h2>
                         </div>
+                        <?php 
+                            if(isset($_SESSION['msg'])){?>
+                                <script>showWithCustomIconMessage();</script>
+                                <?php
+                                unset ($_SESSION['msg']);
+                            }
+                        ?>
+                        <?php 
+                            if(isset($_SESSION['erro'])){?>
+                                <script>showErrorMensage();</script>
+                                <?php
+                                unset ($_SESSION['erro']);
+                            }
+                        ?>
                         <div class="body">
-
-                            <div class="row clearfix">
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Nome">
+                            <form action="../docsphp/proc_cadautor.php" method="POST">
+                                <div class="row clearfix">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input name="autnome" type="text" class="form-control" placeholder="Nome" maxlength="45" required="required">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-5">
+                                    <div class="col-md-5">
 
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="submit" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
+                                    </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

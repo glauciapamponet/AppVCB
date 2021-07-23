@@ -388,10 +388,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div name="tipo" class="col-md-2">
-                                        <select class="form-control show-tick">
-                                            <option value='Fixo'>Fixo</option>
-                                            <option value='Celular'>Celular</option>
+                                    <div class="col-md-2">
+                                        <select name="tipotelcli" class="form-control show-tick">
+                                            <option value=1>Celular</option>
+                                            <option value=2>Fixo</option>
                                         </select>
                                     </div>
                                     <div class="col-md-1">

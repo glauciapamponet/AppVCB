@@ -67,6 +67,10 @@
                 imageUrl: "../../images/sad.png"
             });
         }
+        function myFunction() {
+            var x = document.getElementById("myInput").value;
+            document.getElementById("demo").innerHTML = "You wrote: " + x;
+        }
     </script>
 
 </head>
@@ -246,7 +250,7 @@
                                 unset ($_SESSION['erro']);
                             }
                         ?>
-                        <div class="body">
+                        <div id="crud_table" class="body">
                             <form action="../docsphp/proc_cadvend.php" method= "POST">
                                 <div class="row clearfix">
                                     <div class="col-md-3">
@@ -273,180 +277,134 @@
                                                 ?>
                                         </select>
                                     </div>
+                                    <div class="col-md-3">
+                                        <b>Caixa</b>
+                                        <select name="select_caixa" class="form-control show-tick">
+                                            <?php
+                                                $result_func = "SELECT idfuncionarios, nomefunc FROM funcionarios WHERE idcargo=2";
+                                                $resultado_func = mysqli_query($conex, $result_func);
+                                                while($row_func = mysqli_fetch_assoc($resultado_func)) {
+                                                    echo '<option value ="'.$row_func[idfuncionarios].'">'.$row_func[nomefunc].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                                     <div class="col-md-2">
                                         <b>Tipo de Pagamento</b>
-                                        <select class="form-control show-tick">
+                                        <select name="tipopag" class="form-control show-tick">
                                             <option>Débito</option>
                                             <option>Crédito</option>
                                             <option>Dinheiro</option>
                                         </select>
                                     </div>
-                                    <div class="table-responsive">
-                                        <button id="table2-new-row-button" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
-                                        <table id="table2" class="table table-bordered table-striped table-hover  dataTable" >
-                                            <thead class="thead-dark">
-                                                <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">id Livro</th>
-                                                <th scope="col">Quant</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Mark</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Jacob</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>Larry</td>
-                                            </tr>
-                                        </tbody>
-                                    </table> <!-- END Table -->
-                                </div> <!-- END Row -->
-                                </div>
-                                <div class="row clearfix">
                                     <div class="col-md-1">
-                                        <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                        <input type="submit" id="save" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
                                     </div>
                                 </div>
+                                <div class="row-clearfix">
+                                    <div class="idlivros col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="idlivro" id="myInput" class="form-control" placeholder="Id do Livro" maxlength="45" required="required" autofocus oninput="myFunction()">
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="qtdlivros col-md-2">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="qtdlivro" class="form-control" placeholder="Quantidade" maxlength="45" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="qtdlivros col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="demo" id="demo" class="form-control" placeholder="" maxlength="45" disabled=true>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-3">
+                                        <button type="button" id="add" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
+                                    </div>
+                                </div>
+                                <!-- </div>  -->
+                  
                             </form>
                         </div>
-                    </div>
+                    </div> 
+                    <!-- End Card -->
                 </div>
+                
             </div>
             <!-- #END# Multi Column -->
         </div>
     </section>
 
-    <script>
-$(document).ready(function(){
- var count = 1;
- $('#add').click(function(){
-  count = count + 1;
-  var html_code = "<tr id='row"+count+"'>";
-   html_code += "<td contenteditable='true' class='item_name'></td>";
-   html_code += "<td contenteditable='true' class='item_code'></td>";
-   html_code += "<td contenteditable='true' class='item_desc'></td>";
-   html_code += "<td contenteditable='true' class='item_price' ></td>";
-   html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";
-   html_code += "</tr>";
-   $('#crud_table').append(html_code);
- });
 
- $(document).on('click', '.remove', function(){
-  var delete_row = $(this).data("row");
-  $('#' + delete_row).remove();
- });
-
- $('#save').click(function(){
-  var item_name = [];
-  var item_code = [];
-  var item_desc = [];
-  var item_price = [];
-  $('.item_name').each(function(){
-   item_name.push($(this).text());
-  });
-  $('.item_code').each(function(){
-   item_code.push($(this).text());
-  });
-  $('.item_desc').each(function(){
-   item_desc.push($(this).text());
-  });
-  $('.item_price').each(function(){
-   item_price.push($(this).text());
-  });
-  $.ajax({
-   url:"insert.php",
-   method:"POST",
-   data:{item_name:item_name, item_code:item_code, item_desc:item_desc, item_price:item_price},
-   success:function(data){
-    alert(data);
-    $("td[contentEditable='true']").text("");
-    for(var i=2; i<= count; i++)
-    {
-     $('tr#'+i+'').remove();
-    }
-    fetch_item_data();
-   }
-  });
- });
-
- function fetch_item_data()
- {
-  $.ajax({
-   url:"fetch.php",
-   method:"POST",
-   success:function(data)
-   {
-    $('#inserted_item_data').html(data);
-   }
-  })
- }
- fetch_item_data();
-
-});
-</script>
-
-    <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core Js -->
-    <script src="../plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Select Plugin Js -->
-    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="../plugins/node-waves/waves.js"></script>
-
-    <!-- Editable Table Plugin Js -->
-    <script src="../plugins/editable-table/mindmup-editabletable.js"></script>
-    <script src="../plugins/editable-table/bstable.js"></script>
-
-    <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" language="javascript"></script>
+    <script>
+        $(document).ready(function(){
+        var count = 1;
+        $('#add').click(function(){
+            count = count + 1;
+            var html_code = "<div class='row-clearfix' id='row"+count+"'>";
+            html_code += "<div class='idlivros md-col-4'><div class='form-group'><div class='form-line'><input type='text' name='idlivro' class='form-control' placeholder='Id do Livro' maxlength='45' required='required' autofocus></div></div></div>";
+            html_code += "<div class='qtdlivros md-col-4'><div class='form-group'><div class='form-line'><input type='text' name='idlivro' class='form-control' placeholder='Qtds do Livro' maxlength='45' required='required'></div></div></div>";
+            html_code += "<div class='md-col-3'><div class='form-group'><div class='form-line'><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></div></div></div>";
+            html_code += "</tr>";
+        $('#crud_table').append(html_code);
+        });
 
-    <!-- Custom Js -->
-    <script src="../js/admin.js"></script>
-    <script src="../js/pages/tables/jquery-datatable.js"></script>
-    <script src="../js/pages/tables/editable-table.js"></script>
-    <script src="../js/pages/tables/editable.js"></script>
+        $(document).on('click', '.remove', function(){
+        var delete_row = $(this).data("row");
+        $('#' + delete_row).remove();
+        });
 
-    <!-- Demo Js -->
-    <script src="../js/demo.js"></script>
-
+        //  $('#save').click(function(){
+        //   var id_livros = [];
+        //   var qtd_livros = [];
+        //   $('.idlivros').each(function(){
+        //    id_livros.push($(this).text());
+        //   });
+        //   $('.qtdlivros').each(function(){
+        //    qtd_livros.push($(this).text());
+        //   });
+        //   $.ajax({
+        //    url:"insert.php",
+        //    method:"POST",
+        //    data:{id_livros:id_livros, qtd_livros:qtd_livros},
+        //    success:function(data){
+        //     alert(data);
+        //     $("td[contentEditable='true']").text("");
+        //     for(var i=2; i<= count; i++)
+        //     {
+        //      $('tr#'+i+'').remove();
+        //     }
+        //    }
+        //   });
+        //  }
+        // );
+        });
+</script>
 
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="../plugins/multi-select/js/jquery.multi-select.js"></script>
-
-    <!-- Jquery Spinner Plugin Js -->
-    <script src="../plugins/jquery-spinner/js/jquery.spinner.js"></script>
-
-
-    <!-- Bootstrap Tags Input Plugin Js -->
-    <script src="../plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
-
-    <!-- noUISlider Plugin Js -->
-    <script src="../plugins/nouislider/nouislider.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="../plugins/node-waves/waves.js"></script>
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Custom Js -->
+    <script src="../js/admin.js"></script>
+    <!-- Demo Js -->
+    <script src="../js/demo.js"></script>
 
 
     <!-- Custom Js -->

@@ -7,7 +7,7 @@
 
     $cad_edit = "INSERT INTO editoras (nomeedit) VALUES ('$nomeedit');";
     $result_edit = mysqli_query ($conex, $cad_edit);
-    $pega_id = "SELECT ideditoras FROM editoras WHERE nomeedit= '$nomeedit'";
+    $pega_id = "SELECT ideditoras FROM editoras ORDER BY ideditoras DESC LIMIT 1";
     $selectid = mysqli_query ($conex, $pega_id);
     $idedit = mysqli_fetch_array($selectid);
 

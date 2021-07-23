@@ -10,7 +10,7 @@
 
     $cad_cli = "INSERT INTO clientes (nomecli, rgcli, cpfcli, datanascim) VALUES ('$nomecli', '$rgcli', '$cpfcli', '$datanascim');";
     $result_cli = mysqli_query ($conex, $cad_cli);
-    $pega_idcli = "SELECT idclientes FROM clientes WHERE nomecli= '$nomecli'";
+    $pega_idcli = "SELECT idclientes FROM clientes ORDER BY idclientes DESC LIMIT 1";
     $selectid = mysqli_query ($conex, $pega_idcli);
     $idcli = mysqli_fetch_array($selectid);
 

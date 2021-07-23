@@ -13,7 +13,7 @@
     //idfuncionarios, nomefunc, RGfunc, cpffunc, foto, idcargo, idturno
     $cad_func = "INSERT INTO funcionarios (nomefunc, RGfunc, cpffunc, foto, idcargo, idturno) VALUES ('$nomefunc', '$RGfunc', '$cpffunc', '1', $cargo, $turno);";
     $result_func = mysqli_query ($conex, $cad_func); //certo, mas testar dnv
-    $pega_idfunc = "SELECT idfuncionarios FROM funcionarios WHERE cpffunc='$cpffunc'";
+    $pega_idfunc = "SELECT idfuncionarios FROM funcionarios ORDER BY idfuncionarios DESC LIMIT 1";
     $selectid = mysqli_query ($conex, $pega_idfunc);
     $idfunc = mysqli_fetch_array($selectid);
 
@@ -22,11 +22,11 @@
     if ($cargo==3){
         $corredorestoque = filter_input (INPUT_POST, 'corredorestoque');
         $cad_cargo = "INSERT INTO estoquista (funcionarios_idfuncionarios, corredorestoque) VALUES ('$idfunc[idfuncionarios]', '$corredorestoque');";    
-        $result_cargo = mysqli_query ($conex, $cad_cargo);
+        //$result_cargo = mysqli_query ($conex, $cad_cargo);
     }else if ($cargo==4){ 
         $comissaovend = filter_input (INPUT_POST, 'comissaovend');
         $cad_cargo = "INSERT INTO vendedor (funcionarios_idfuncionarios, comissaovend) VALUES ('$idfunc[idfuncionarios]', '$comissaovend');";    
-        $result_cargo = mysqli_query ($conex, $cad_cargo);
+        //$result_cargo = mysqli_query ($conex, $cad_cargo);
     }
 
 
@@ -43,7 +43,7 @@
     }else {
         $cad_endfunc = "INSERT INTO endfunc (logradourofunc, numerofunc, complemento, bairrofunc, cidadefunc, cepfunc, idfunc) VALUES ('$logradourofunc', '$numerofunc', '$complemento', '$bairrofunc', '$cidadefunc', '$cepfunc', '$idfunc[idfuncionarios]');";    
     }
-    $result_endfunc = mysqli_query ($conex, $cad_endfunc);
+    //$result_endfunc = mysqli_query ($conex, $cad_endfunc);
 
     //Inserção em 'telefunc'
     $dddfunc = filter_input (INPUT_POST, 'dddfunc');
@@ -65,10 +65,10 @@
     } else{
         $_SESSION['erro'] = "ERRO";
     }
-    //header("Location: ../pages/cadFunc.php");
+    header("Location: ../pages/cadFunc.php");
     
     echo "cad_func: $cad_func <br>";
-    //echo "cad_cargo: $cad_cargo <br>";
+    echo "cad_cargo: $cad_cargo <br>";
     echo "cad_endfunc: $cad_endfunc <br>";
     echo "cad_telfunc: $cad_telfunc <br>";
 

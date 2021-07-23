@@ -16,7 +16,7 @@
     //echo "$cad_livro";
     $result_livro = mysqli_query ($conex, $cad_livro);
 
-    $pega_id = "SELECT idlivros FROM livros WHERE nomelivro= '$nomelivro'";
+    $pega_id = "SELECT idlivros FROM livros ORDER BY idlivros DESC LIMIT 1";
     $selectid = mysqli_query ($conex, $pega_id);
     $id = mysqli_fetch_array($selectid);
 

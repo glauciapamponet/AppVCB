@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    include_once ("../conex.php");
+    session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -38,6 +43,32 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+    function formatar_mascara(src, mascara) {
+            var campo = src.value.length;
+            var saida = mascara.substring(0,1);
+            var texto = mascara.substring(campo);
+            if(texto.substring(0,1) != saida) {
+                src.value += texto.substring(0,1);
+            }
+        }
+        function showWithCustomIconMessage() {
+            swal({
+                title: "Sucesso!",
+                text: "Cadastro concluído.",
+                imageUrl: "../../images/thumbs-up.png"
+            });
+        }
+        function showErrorMensage() {
+            swal({
+                title: "Erro",
+                text: "Cadastro não foi efetuado.",
+                imageUrl: "../../images/sad.png"
+            });
+        }
+    </script>
+
 </head>
 
 <body class="theme-black">
@@ -201,75 +232,92 @@
                                 CADASTRO VENDAS
                             </h2>
                         </div>
+                        <?php 
+                            if(isset($_SESSION['msg'])){?>
+                                <script>showWithCustomIconMessage();</script>
+                                <?php
+                                unset ($_SESSION['msg']);
+                            }
+                        ?>
+                        <?php 
+                            if(isset($_SESSION['erro'])){?>
+                                <script>showErrorMensage();</script>
+                                <?php
+                                unset ($_SESSION['erro']);
+                            }
+                        ?>
                         <div class="body">
-
-                            <div class="row clearfix">
-                              <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="ID Cliente">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-2">
-                                  <div class="form-group">
-                                      <div class="form-line">
-                                          <input type="text" class="form-control" placeholder="ID Vendedor">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-2">
-                                <b>Tipo de Pagamento</b>
-                                      <select class="form-control show-tick">
-                                          <option>Gerente</option>
-                                          <option>Caixa</option>
-                                          <option>Estoquista</option>
-                                          <option>Vendedor</option>
-                                      </select>
-                              </div>
-                              <div class="table-responsive">
-                            		<button id="table2-new-row-button" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
-                        		  	<table id="table2" class="table table-bordered table-striped table-hover  dataTable" >
-                        			  	<thead class="thead-dark">
-                        				    <tr>
-                        				      <th scope="col">#</th>
-                        				      <th scope="col">id Livro</th>
-                                      <th scope="col">Quant</th>
-                        				    </tr>
-                        			  	</thead>
-                        			  	<tbody>
-                        				    <tr>
-                        				      <th scope="row">1</th>
-                        				      <td>Mark</td>
-                                      <td>Mark</td>
-                        				    </tr>
-                        				    <tr>
-                        				      <th scope="row">2</th>
-                        				      <td>Jacob</td>
-                                      <td>Jacob</td>
-                        				    </tr>
-                        				    <tr>
-                        				      <th scope="row">3</th>
-                        				      <td>Larry</td>
-                                      <td>Larry</td>
-                        				    </tr>
-                        			  	</tbody>
-                        			</table>
-                        		</div>
-
-                          </div>
-                            <div class="row clearfix">
-
-
-                                <div class="col-md-1">
-                                    <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                            <form action="../docsphp/proc_cadvend.php" method= "POST">
+                                <div class="row clearfix">
+                                    <div class="col-md-3">
+                                        <b>Cliente</b>
+                                        <select name="select_cliente" class="form-control show-tick">
+                                            <?php
+                                                $result_cli = "SELECT idclientes, nomecli FROM clientes";
+                                                $resultado_cli = mysqli_query($conex, $result_cli);
+                                                while($row_cli = mysqli_fetch_assoc($resultado_cli)) {
+                                                    echo '<option value ="'.$row_cli[idclientes].'">'.$row_cli[nomecli].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Vendedor</b>
+                                        <select name="select_vendedor" class="form-control show-tick">
+                                            <?php
+                                                $result_func = "SELECT idfuncionarios, nomefunc FROM funcionarios WHERE idcargo=4";
+                                                $resultado_func = mysqli_query($conex, $result_func);
+                                                while($row_func = mysqli_fetch_assoc($resultado_func)) {
+                                                    echo '<option value ="'.$row_func[idfuncionarios].'">'.$row_func[nomefunc].'</option>';
+                                                }
+                                                ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <b>Tipo de Pagamento</b>
+                                        <select class="form-control show-tick">
+                                            <option>Débito</option>
+                                            <option>Crédito</option>
+                                            <option>Dinheiro</option>
+                                        </select>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <button id="table2-new-row-button" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
+                                        <table id="table2" class="table table-bordered table-striped table-hover  dataTable" >
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">id Livro</th>
+                                                <th scope="col">Quant</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Jacob</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>Larry</td>
+                                            </tr>
+                                        </tbody>
+                                    </table> <!-- END Table -->
+                                </div> <!-- END Row -->
                                 </div>
-
-
-                            </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-primary btn-lg m-l-15 waves-effect">CADASTRAR</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-
                     </div>
                 </div>
             </div>

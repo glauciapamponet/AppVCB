@@ -12,8 +12,8 @@
 
     //idfuncionarios, nomefunc, RGfunc, cpffunc, foto, idcargo, idturno
     $cad_func = "INSERT INTO funcionarios (nomefunc, RGfunc, cpffunc, foto, idcargo, idturno) VALUES ('$nomefunc', '$RGfunc', '$cpffunc', '1', $cargo, $turno);";
-    //$result_func = mysqli_query ($conex, $cad_func); //certo, mas testar dnv
-    $pega_idfunc = "SELECT idfuncionarios FROM funcionarios WHERE nomefunc='$nomefunc'";
+    $result_func = mysqli_query ($conex, $cad_func); //certo, mas testar dnv
+    $pega_idfunc = "SELECT idfuncionarios FROM funcionarios WHERE cpffunc='$cpffunc'";
     $selectid = mysqli_query ($conex, $pega_idfunc);
     $idfunc = mysqli_fetch_array($selectid);
 
@@ -22,13 +22,12 @@
     if ($cargo==3){
         $corredorestoque = filter_input (INPUT_POST, 'corredorestoque');
         $cad_cargo = "INSERT INTO estoquista (funcionarios_idfuncionarios, corredorestoque) VALUES ('$idfunc[idfuncionarios]', '$corredorestoque');";    
-        echo "estoquista";
+        $result_cargo = mysqli_query ($conex, $cad_cargo);
     }else if ($cargo==4){ 
         $comissaovend = filter_input (INPUT_POST, 'comissaovend');
         $cad_cargo = "INSERT INTO vendedor (funcionarios_idfuncionarios, comissaovend) VALUES ('$idfunc[idfuncionarios]', '$comissaovend');";    
-        echo "vendedor";
+        $result_cargo = mysqli_query ($conex, $cad_cargo);
     }
-    //$result_cargo = mysqli_query ($conex, $cad_cargo);
 
 
     //Inserção em 'endfunc'
@@ -44,27 +43,32 @@
     }else {
         $cad_endfunc = "INSERT INTO endfunc (logradourofunc, numerofunc, complemento, bairrofunc, cidadefunc, cepfunc, idfunc) VALUES ('$logradourofunc', '$numerofunc', '$complemento', '$bairrofunc', '$cidadefunc', '$cepfunc', '$idfunc[idfuncionarios]');";    
     }
-    //$result_endfunc = mysqli_query ($conex, $cad_endfunc);
+    $result_endfunc = mysqli_query ($conex, $cad_endfunc);
 
     //Inserção em 'telefunc'
     $dddfunc = filter_input (INPUT_POST, 'dddfunc');
     $numerotelfunc = filter_input (INPUT_POST, 'numerofunc');
-    $tipo = filter_input (INPUT_POST, 'tipo');
+    $tipo = filter_input (INPUT_POST, 'tipotelcli');
+
+    if($tipo==1){
+        $tipo="Celular";
+    }else{
+        $tipo="Fixo";
+    }
 
     echo "<br>$tipo<br>";
     $cad_telfunc = "INSERT INTO telefunc (dddfunc, numerofunc, tipotelefunc, idfunc) VALUES ('$dddfunc', '$numerotelfunc', '$tipo', '$idfunc[idfuncionarios]');";
-    //$result_func = mysqli_query ($conex, $cad_telfunc);
+    $result_func = mysqli_query ($conex, $cad_telfunc);
 
     if(mysqli_insert_id($conex)){
         $_SESSION['msg'] = "Cadastro feito com sucesso!";
-        //header("Location: ../pages/cadFunc.php");
     } else{
         $_SESSION['erro'] = "ERRO";
-        //header("Location: ../pages/cadFunc.php");
     }
+    //header("Location: ../pages/cadFunc.php");
     
     echo "cad_func: $cad_func <br>";
-    echo "cad_cargo: $cad_cargo <br>";
+    //echo "cad_cargo: $cad_cargo <br>";
     echo "cad_endfunc: $cad_endfunc <br>";
     echo "cad_telfunc: $cad_telfunc <br>";
 

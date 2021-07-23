@@ -63,6 +63,7 @@ while($row = mysqli_fetch_array($result)) //(`idvendas`, `ITENS`, `TOTAL`, `nome
  $sub_array[] = '<div data-id="'.$row["idvendas"].'" data-column="tipopag">' . $row["tipopag"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["idvendas"].'" data-column="nomecaixa">' . $row["nomecaixa"] . '</div>';
  $sub_array[] = '<div data-id="'.$row["idvendas"].'" data-column="nomevend">' . $row["nomevend"] . '</div>';
+
  $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="'.$row["idvendas"].'">Delete</button>';
  $total_order = $total_order + floatval($row["total"]);
  $data[] = $sub_array;
@@ -85,7 +86,7 @@ $output = array(
  "recordsTotal"  =>  get_all_data($connect),
  "recordsFiltered" => $number_filter_row,
  "data"    => $data,
- "total"  => "R$ ".number_format($total_order, 2, ",", ".") 
+ "total"  => "R$ ".number_format($total_order, 2, ",", ".")
 );
 
 echo json_encode($output);

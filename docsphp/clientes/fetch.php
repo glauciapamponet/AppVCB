@@ -28,7 +28,7 @@ if(isset($_POST["order"]))
 }
 else
 {
- $query .= 'ORDER BY v.idvendas DESC ';
+ $query .= 'ORDER BY c.idclientes DESC ';
 }
 
 $query1 = '';

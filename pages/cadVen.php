@@ -75,6 +75,21 @@
 
 </head>
 
+<?php 
+    if(isset($_SESSION['msg'])){?>
+        <script>showWithCustomIconMessage();</script>
+        <?php
+        unset ($_SESSION['msg']);
+    }
+?>
+<?php 
+    if(isset($_SESSION['erro'])){?>
+        <script>showErrorMensage();</script>
+        <?php
+        unset ($_SESSION['erro']);
+    }
+?>
+
 <body class="theme-black">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -226,33 +241,20 @@
     </section>
 
     <section class="content">
-        <div class="container-fluid">
+        <div  class="container-fluid">
             <!-- Multi Column -->
-            <div class="row clearfix">
+            <div   class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
+                    <div  class="card">
                         <div class="header">
                             <h2>
                                 CADASTRO VENDAS
                             </h2>
                         </div>
-                        <?php 
-                            if(isset($_SESSION['msg'])){?>
-                                <script>showWithCustomIconMessage();</script>
-                                <?php
-                                unset ($_SESSION['msg']);
-                            }
-                        ?>
-                        <?php 
-                            if(isset($_SESSION['erro'])){?>
-                                <script>showErrorMensage();</script>
-                                <?php
-                                unset ($_SESSION['erro']);
-                            }
-                        ?>
-                        <div id="crud_table" class="body">
-                            <form action="../docsphp/proc_cadvend.php" method= "POST">
-                                <div class="row clearfix">
+                        
+                        <div class="body">
+                            <form   action="../docsphp/proc_cadvend.php" method= "POST">
+                                <div id="crud_table" class="row clearfix">
                                     <div class="col-md-3">
                                         <b>Cliente</b>
                                         <select name="select_cliente" class="form-control show-tick">
@@ -277,6 +279,7 @@
                                                 ?>
                                         </select>
                                     </div>
+                                    
                                     <div class="col-md-3">
                                         <b>Caixa</b>
                                         <select name="select_caixa" class="form-control show-tick">
@@ -300,43 +303,29 @@
                                     <div class="col-md-1">
                                         <input type="submit" id="save" value= "CADASTRAR" class="btn btn-primary btn-lg m-l-15 waves-effect">
                                     </div>
-                                </div>
-                                <div class="row-clearfix">
-                                    <div class="idlivros col-md-2">
+                                </div> 
+                                <div id="crud_table" class="row-clearfix">
+                                    <div class="idlivros col-md-4">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="idlivro" id="myInput" class="form-control" placeholder="Id do Livro" maxlength="45" required="required" autofocus oninput="myFunction()">
-                                            </div>
-                                        </div>   
-                                    </div>
-                                    <div class="qtdlivros col-md-2">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" name="qtdlivro" class="form-control" placeholder="Quantidade" maxlength="45" required="required">
+                                                <input type="text" name="idlivro" class="form-control" placeholder="Id do Livro" maxlength="45" required="required" autofocus>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="qtdlivros col-md-3">
+                                    <div class="qtdlivros col-md-4">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <input type="text" name="demo" id="demo" class="form-control" placeholder="" maxlength="45" disabled=true>
+                                                <input type="text" name="qtdlivros" class="form-control" placeholder="Quantidade" maxlength="45" required="required">
                                             </div>
                                         </div>
-                                    </div> -->
-                                    <div class="col-md-3">
-                                        <button type="button" id="add" class="btn  btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button>
                                     </div>
+                                    <div class="col-md-3"><button type="button" id="add" class="btn btn-primary btn-sm m-l-15 waves-effect"><i class="material-icons">add_circle_outline</i></button></div>
                                 </div>
-                                <!-- </div>  -->
-                  
                             </form>
                         </div>
-                    </div> 
-                    <!-- End Card -->
+                    </div>
                 </div>
-                
             </div>
-            <!-- #END# Multi Column -->
         </div>
     </section>
 
@@ -352,10 +341,10 @@
         $('#add').click(function(){
             count = count + 1;
             var html_code = "<div class='row-clearfix' id='row"+count+"'>";
-            html_code += "<div class='idlivros md-col-4'><div class='form-group'><div class='form-line'><input type='text' name='idlivro' class='form-control' placeholder='Id do Livro' maxlength='45' required='required' autofocus></div></div></div>";
-            html_code += "<div class='qtdlivros md-col-4'><div class='form-group'><div class='form-line'><input type='text' name='idlivro' class='form-control' placeholder='Qtds do Livro' maxlength='45' required='required'></div></div></div>";
-            html_code += "<div class='md-col-3'><div class='form-group'><div class='form-line'><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></div></div></div>";
-            html_code += "</tr>";
+            html_code += "<div class='idlivros col-md-4'><div class='form-group'><div class='form-line'><input type='text' name='idlivro' class='form-control' placeholder='Id do Livro' maxlength='45' required='required' autofocus></div></div></div>";
+            html_code += "<div class='qtdlivros col-md-4'><div class='form-group'><div class='form-line'><input type='text' name='qtdlivros' class='form-control' placeholder='Quantidade do Livro' maxlength='45' required='required'></div></div></div>";
+            html_code += "<div class='col-md-3'><div class='form-group'><div class='form-line'><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-sm remove'>-</button></div></div></div>";
+            html_code += "</div>";
         $('#crud_table').append(html_code);
         });
 

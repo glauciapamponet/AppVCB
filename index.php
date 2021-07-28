@@ -1,5 +1,7 @@
 ﻿<?php
     include_once "conex.php";
+        session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -218,7 +220,7 @@
                         </div>
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
-                            <div class="number sales-count-to" data-from="0" data-to="257"  data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="1257" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -284,7 +286,7 @@
                             <ul class="dashboard-stat-list" style="margin-top: 0px;">
                                 <li>
                                     HOJE
-                                    <span class="pull-right"><b>1 200</b> <small>VENDAS</small></span>
+                                    <span class="pull-right"><b>1200</b> <small>VENDAS</small></span>
                                 </li>
                                 <li>
                                     ONTEM
@@ -307,27 +309,33 @@
                             <br>
                             <ul class="dashboard-stat-list">
                                 <li>
-                                    JOÃO
-                                    <span class="pull-right"><b>15</b> <small>UNID</small></span>
+                                    <?php
+                                        $select_topclientes = "select c.nomecli, sum(lvd.qtdlivros)as quant from clientes c, vendas vd, livrosdavenda lvd 
+                                        where c.idclientes = vd.idcliente and vd.idvendas = lvd.idvenda group by c.nomecli 
+                                        order by sum(lvd.qtdlivros) DESC LIMIT 5;";
+                                        $result_topclientes = mysqli_query($conex, $select_topclientes);
+                                        $topclientes[] = mysqli_fetch_all($result_topclientes);                                        
+                                    ?>
+                                    <?php print_r($topclientes[0][0][0])?>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][0][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    MARIA
-                                    <span class="pull-right"><b>90</b> <small>UNID</small></span>
+                                    <?php print_r($topclientes[0][1][0])?>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][1][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    JUNIOR
-                                    <span class="pull-right"><b>342</b> <small>UNID</small></span>
+                                    <?php print_r($topclientes[0][2][0])?>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][2][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    JENISCLEISON
-                                    <span class="pull-right"><b>4 225</b> <small>UNID</small></span>
+                                    <?php print_r($topclientes[0][3][0])?>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][3][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    JOSECLAUDIA
-                                    <span class="pull-right"><b>8 752</b> <small>UNID</small></span>
+                                    <?php print_r($topclientes[0][4][0])?>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][4][1])?></b> <medium>UNID</medium></span>
                                 </li>
                             </ul>
-
                         </div>
                     </div>
                 </div>
@@ -340,24 +348,31 @@
                             <br>
                             <ul class="dashboard-stat-list">
                                 <li>
-                                    A
-                                    <span class="pull-right"><b>15</b> <small>UNID</small></span>
+                                    <?php
+                                        $select_toplivros = "select lv.nomelivro, sum(vend.qtdlivros) as sum from livrosdavenda vend, livros lv
+                                        where lv.idlivros = vend.idlivro group by lv.nomelivro order by sum(vend.qtdlivros) DESC;";
+                                        $result_toplivros = mysqli_query($conex, $select_toplivros);
+                                        $toplivros[] = mysqli_fetch_all($result_toplivros);                                      
+                                    ?>
+                                    <?php print_r ($toplivros[0][0][0])?>
+
+                                    <span class="pull-right"><b><?php print_r($toplivros[0][0][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    B
-                                    <span class="pull-right"><b>90</b> <small>UNID</small></span>
+                                    <?php print_r ($toplivros[0][1][0])?>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][1][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    C
-                                    <span class="pull-right"><b>342</b> <small>UNID</small></span>
+                                    <?php print_r ($toplivros[0][2][0])?>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][2][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    D
-                                    <span class="pull-right"><b>4 225</b> <small>UNID</small></span>
+                                    <?php print_r ($toplivros[0][3][0])?>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][3][1])?></b> <medium>UNID</medium></span>
                                 </li>
                                 <li>
-                                    E
-                                    <span class="pull-right"><b>8 752</b> <small>UNID</small></span>
+                                    <?php print_r ($toplivros[0][4][0])?>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][4][1])?></b> <medium>UNID</medium></span>
                                 </li>
                             </ul>
                         </div>

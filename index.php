@@ -317,19 +317,52 @@
                                  1,8,3,4,2,6,7
                             </div>
 
+                            <?php
+                                $select_hoje = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(now()) GROUP BY v.idvendas)) as ventot;";
+                                $result_hoje = mysqli_query($conex, $select_hoje);
+                                $hoje = mysqli_fetch_assoc($result_hoje);
 
+                                $select_ontem = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-1) GROUP BY v.idvendas)) as ventot;";
+                                $result_ontem = mysqli_query($conex, $select_ontem);
+                                $ontem = mysqli_fetch_assoc($result_ontem);
+
+                                $select_passada = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv 
+                                ON v.idvendas = ldv.idvenda LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) < date(date(now())-7) and date(v.dataehora) > date(date(now())-14) GROUP BY v.idvendas)) as ventot;";
+                                $result_passada = mysqli_query($conex, $select_passada);
+                                $passada = mysqli_fetch_assoc($result_passada);
+                            ?>
                             <ul class="dashboard-stat-list" style="margin-top: 0px;">
                                 <li>
                                     HOJE
-                                    <span class="pull-right"><b>1200</b> <small>VENDAS</small></span>
+                                    <span class="pull-right"><b>
+                                    <?php 
+                                    if (!$hoje['sum']) echo "0"; 
+                                    else echo $hoje['sum']; 
+                                    ?>
+                                    </b> <small>VENDAS</small></span>
                                 </li>
                                 <li>
                                     ONTEM
-                                    <span class="pull-right"><b>3 872</b> <small>VENDAS</small></span>
+                                    <span class="pull-right"><b>
+                                    <?php 
+                                        if (!$ontem['sum']) echo "0"; 
+                                        else echo $ontem['sum']; 
+                                    ?>
+                                    </b> <small>VENDAS</small></span>
                                 </li>
                                 <li>
                                     SEMANA PASSADA
-                                    <span class="pull-right"><b>26 582</b> <small>VENDAS</small></span>
+                                    <span class="pull-right"><b>
+                                    <?php 
+                                        if (!$passada['sum']) echo "0"; 
+                                        else echo $passada['sum']; 
+                                    ?> 
+                                    </b> <small>VENDAS</small></span>
                                 </li>
                             </ul>
                         </div>

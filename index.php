@@ -220,8 +220,19 @@
                         </div>
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
-                            <div class="number count-to" data-from="0" data-to="1257" data-speed="1000" data-fresh-interval="20"></div>
-                            <div class="number " data-from="0" data-to="12345"  data-fresh-interval="20">12345</div>
+                            <?php
+                                $select_vendas = "select SUM(total) as aa from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where month(v.dataehora) = month(now()) and YEAR(v.dataehora) = YEAR(now()) GROUP BY v.idvendas)) as ventotal;";
+                                $result_vendas = mysqli_query($conex, $select_vendas);
+                                $vendas = mysqli_fetch_assoc($result_vendas);
+                            ?>
+                            <div class="number">
+                                <?php 
+                                    if (!$vendas['aa']) echo "0"; 
+                                    else echo "$vendas[aa]"; 
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -232,7 +243,19 @@
                         </div>
                         <div class="content">
                             <div class="text">CLIENTES NOVOS</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                            <?php
+                                $select_clientes = "select count(cli.idclientes) as conta from clientes cli where cli.idclientes not in 
+                                (select idclientes from clientes c, vendas vd where vd.idcliente = c.idclientes
+                                and month(vd.dataehora) < month(now()) and year(vd.dataehora) = year(now()));";
+                                $result_clientes = mysqli_query($conex, $select_clientes);
+                                $clientes = mysqli_fetch_assoc($result_clientes);
+                            ?>
+                            <div class="number" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">
+                                <?php 
+                                    if (!$clientes['conta']) echo "0"; 
+                                    else echo "$clientes[conta]"; 
+                                ?>    
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -244,7 +267,18 @@
                         </div>
                         <div class="content">
                             <div class="text">LIVROS VENDIDOS</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                            <?php
+                                $select_livros = "select sum(ldv.qtdlivros) as vendas from livrosdavenda ldv, vendas vd where vd.idvendas = ldv.idvenda
+                                and month(vd.dataehora) = month(now()) and year(vd.dataehora) = year(now());";
+                                $result_livros = mysqli_query($conex, $select_livros);
+                                $livros = mysqli_fetch_assoc($result_livros);
+                            ?>
+                            <div class="number">
+                                <?php 
+                                    if (!$livros['vendas']) echo "0"; 
+                                    else echo "$livros[vendas]"; 
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>

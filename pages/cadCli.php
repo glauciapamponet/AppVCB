@@ -236,19 +236,19 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header">
+                        <div class="header bg-red">
                             <h2>
                                 CADASTRO CLIENTES
                             </h2>
                         </div>
-                        <?php 
+                        <?php
                             if(isset($_SESSION['msg'])){?>
                                 <script>showWithCustomIconMessage();</script>
                                 <?php
                                 unset ($_SESSION['msg']);
                             }
                         ?>
-                        <?php 
+                        <?php
                             if(isset($_SESSION['erro'])){?>
                                 <script>showErrorMensage();</script>
                                 <?php

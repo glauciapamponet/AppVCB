@@ -218,7 +218,7 @@
                         </div>
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
-                            <div class="number sales-count-to" data-from="0" data-to="257"  data-fresh-interval="20"></div>
+                            <div class="number " data-from="0" data-to="12345"  data-fresh-interval="20">12345</div>
                         </div>
                     </div>
                 </div>

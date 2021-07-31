@@ -220,7 +220,12 @@
                         </div>
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
-                            <div class="number count-to" data-from="0" data-to="1257" data-speed="1000" data-fresh-interval="20"></div>
+                            <?php
+                                $select_vendas = "";
+                                $result_vendas = mysqli_query($conex, $select_vendas);
+                                $vendas[] = mysqli_fetch_all($result_vendas);                                        
+                            ?>
+                            <div class="number" data-from="0" data-to="1257" data-speed="1000" data-fresh-interval="20"><?php $vendas ?></div>
                         </div>
                     </div>
                 </div>
@@ -231,7 +236,12 @@
                         </div>
                         <div class="content">
                             <div class="text">CLIENTES NOVOS</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                            <?php
+                                $select_clientes = "";
+                                $result_clientes = mysqli_query($conex, $select_clientes);
+                                $clientes[] = mysqli_fetch_all($result_clientes);                                        
+                            ?>
+                            <div class="number" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"><?php $clientes ?></div>
                         </div>
                     </div>
                 </div>
@@ -243,6 +253,11 @@
                         </div>
                         <div class="content">
                             <div class="text">LIVROS VENDIDOS</div>
+                            <?php
+                                $select_clientes = "";
+                                $result_clientes = mysqli_query($conex, $select_clientes);
+                                $clientes[] = mysqli_fetch_all($result_clientes);                                        
+                            ?>
                             <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
@@ -275,6 +290,11 @@
                     <div class="card">
                         <div class="body bg-pink content">
                           <div class="text"><strong>VENDAS DA SEMANA</strong></div>
+                          <?php
+                                $select_vendassemana = "";
+                                $result_vendassemana = mysqli_query($conex, $select_vendassemana);
+                                $vendassemana[] = mysqli_fetch_all($result_vendassemana);                                        
+                            ?>
                             <div class="sparkline"  data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
                                  data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
                                  data-offset="90" data-width="100%" data-height="85px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"

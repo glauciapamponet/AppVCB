@@ -220,11 +220,7 @@
                         </div>
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
-<<<<<<< HEAD
                             <div class="number " data-from="0" data-to="12345"  data-fresh-interval="20">12345</div>
-=======
-                            <div class="number count-to" data-from="0" data-to="1257" data-speed="1000" data-fresh-interval="20"></div>
->>>>>>> 9685b141e20425191f6d4fedd21eec43a95e1ad4
                         </div>
                     </div>
                 </div>
@@ -314,30 +310,30 @@
                             <ul class="dashboard-stat-list">
                                 <li>
                                     <?php
-                                        $select_topclientes = "select c.nomecli, sum(lvd.qtdlivros)as quant from clientes c, vendas vd, livrosdavenda lvd 
-                                        where c.idclientes = vd.idcliente and vd.idvendas = lvd.idvenda group by c.nomecli 
+                                        $select_topclientes = "select c.nomecli, sum(lvd.qtdlivros)as quant from clientes c, vendas vd, livrosdavenda lvd
+                                        where c.idclientes = vd.idcliente and vd.idvendas = lvd.idvenda group by c.nomecli
                                         order by sum(lvd.qtdlivros) DESC LIMIT 5;";
                                         $result_topclientes = mysqli_query($conex, $select_topclientes);
-                                        $topclientes[] = mysqli_fetch_all($result_topclientes);                                        
+                                        $topclientes[] = mysqli_fetch_all($result_topclientes);
                                     ?>
                                     <?php print_r($topclientes[0][0][0])?>
-                                    <span class="pull-right"><b><?php print_r($topclientes[0][0][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][0][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r($topclientes[0][1][0])?>
-                                    <span class="pull-right"><b><?php print_r($topclientes[0][1][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][1][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r($topclientes[0][2][0])?>
-                                    <span class="pull-right"><b><?php print_r($topclientes[0][2][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][2][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r($topclientes[0][3][0])?>
-                                    <span class="pull-right"><b><?php print_r($topclientes[0][3][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][3][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r($topclientes[0][4][0])?>
-                                    <span class="pull-right"><b><?php print_r($topclientes[0][4][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r($topclientes[0][4][1])?></b> <small>UNID</small></span>
                                 </li>
                             </ul>
                         </div>
@@ -356,27 +352,27 @@
                                         $select_toplivros = "select lv.nomelivro, sum(vend.qtdlivros) as sum from livrosdavenda vend, livros lv
                                         where lv.idlivros = vend.idlivro group by lv.nomelivro order by sum(vend.qtdlivros) DESC;";
                                         $result_toplivros = mysqli_query($conex, $select_toplivros);
-                                        $toplivros[] = mysqli_fetch_all($result_toplivros);                                      
+                                        $toplivros[] = mysqli_fetch_all($result_toplivros);
                                     ?>
                                     <?php print_r ($toplivros[0][0][0])?>
 
-                                    <span class="pull-right"><b><?php print_r($toplivros[0][0][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r($toplivros[0][0][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r ($toplivros[0][1][0])?>
-                                    <span class="pull-right"><b><?php print_r ($toplivros[0][1][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][1][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r ($toplivros[0][2][0])?>
-                                    <span class="pull-right"><b><?php print_r ($toplivros[0][2][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][2][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r ($toplivros[0][3][0])?>
-                                    <span class="pull-right"><b><?php print_r ($toplivros[0][3][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][3][1])?></b> <small>UNID</small></span>
                                 </li>
                                 <li>
                                     <?php print_r ($toplivros[0][4][0])?>
-                                    <span class="pull-right"><b><?php print_r ($toplivros[0][4][1])?></b> <medium>UNID</medium></span>
+                                    <span class="pull-right"><b><?php print_r ($toplivros[0][4][1])?></b> <small>UNID</small></span>
                                 </li>
                             </ul>
                         </div>

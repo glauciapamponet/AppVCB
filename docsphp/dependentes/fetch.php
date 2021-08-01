@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
+$connect = mysqli_connect("localhost", "teste", "mysql", "vcb1");
 $columns = array('dep.iddependente', 'dep.nome', 'dep.datanasc', 'dep.relacao', 'dep.idfunc', 'fu.nomefunc');
 
 $query = "SELECT dep.*, fu.nomefunc FROM dependentes dep LEFT JOIN funcionarios fu ON dep.idfunc = fu.idfuncionarios ";

@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
+$connect = mysqli_connect("localhost", "teste", "mysql", "vcb1");
 $columns = array('c.idclientes', 'c.nomecli', 'c.rgcli', 'c.cpfcli', 'c.datanascim', 'tc.dddcli', 'tc.numerocli', 'tc.tipotelci');
 
 $query = "SELECT c.idclientes, c.nomecli, c.rgcli, c.cpfcli, c.datanascim, tc.dddcli, tc.numerocli, tc.tipotelci

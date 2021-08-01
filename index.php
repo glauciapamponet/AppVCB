@@ -533,7 +533,7 @@
                                                     '<td>'.$row["nomefunc"].'</td>'.
                                                     '<td>'.$row["vendidos"].'</td>'.
                                                     '<td><div class="progress"><div class="progress-bar bg-purple" role="progressbar" aria-valuenow="'.$row["vendidos"].
-                                                    '" aria-valuemin="0" aria-valuemax="1000" style="width: '.$row["vendidos"].
+                                                    '" aria-valuemin="0" aria-valuemax="200" style="width: '.$row["vendidos"].
                                                     '"></div></div></td>'.
                                                     '</tr>';
                                       }

@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
+$connect = mysqli_connect("localhost", "teste", "mysql", "vcb1");
 $columns = array('lv.idlivros', 'lv.nomelivro', 'lv.precolivro', 'ed.nomeedit', 'lv.qtdpaglivro','locest', 'lv.qtdestoque', 'lv.capalivro');
 
 $query = "SELECT lv.idlivros, lv.nomelivro, lv.precolivro, ed.nomeedit, lv.qtdpaglivro, CONCAT(lest.corredorest, lest.estanteest) as locest, lv.qtdestoque, lv.capalivro

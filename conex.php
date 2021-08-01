@@ -2,7 +2,7 @@
     $servidor = "localhost";
     $usuario = "teste";
     $senha = "mysql";
-    $dbname = "vcb";
+    $dbname = "vcb1";
 
     //Cria conexão
     $conex = mysqli_connect($servidor, $usuario, $senha, $dbname);

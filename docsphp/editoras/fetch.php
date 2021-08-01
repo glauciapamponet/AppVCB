@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
+$connect = mysqli_connect("localhost", "teste", "mysql", "vcb1");
 $columns = array('ed.ideditoras', 'ed.nomeedit', 'idrepresedit', 'rep.nomerepr', 'rep.cargo', 'rep.emailrepr','rep.telefonerepre');
 
 $query = "SELECT ed.*, rep.* FROM editoras ed LEFT JOIN represedit rep ON ed.ideditoras = rep.idedit";

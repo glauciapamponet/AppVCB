@@ -1,7 +1,7 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
+$connect = mysqli_connect("localhost", "teste", "mysql", "vcb1");
 $columns = array('fu.idfuncionarios', 'fu.nomefunc', 'fu.RGfunc', 'fu.cpffunc', 'cg.nomecargo', 'tn.nome','tn.horainicio',
 'tn.horafim', 'cg.salario', 'estq.corredorestoque', 'vend.comissaovend');
 

@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "teste", "mysql", "vcb");
+$connect = mysqli_connect("localhost", "teste", "mysql", "vcb1");
 
 // echo "$_POST[id]";
 

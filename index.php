@@ -221,16 +221,16 @@
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
                             <?php
-                                $select_vendas = "select SUM(total) as aa from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
-                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                $select_vendas = "select SUM(total) as aa from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios
                                 where month(v.dataehora) = month(now()) and YEAR(v.dataehora) = YEAR(now()) GROUP BY v.idvendas)) as ventotal;";
                                 $result_vendas = mysqli_query($conex, $select_vendas);
                                 $vendas = mysqli_fetch_assoc($result_vendas);
                             ?>
                             <div class="number">
-                                <?php 
-                                    if (!$vendas['aa']) echo "0"; 
-                                    else echo "$vendas[aa]"; 
+                                <?php
+                                    if (!$vendas['aa']) echo "0";
+                                    else echo "$vendas[aa]";
                                 ?>
                             </div>
                         </div>
@@ -244,17 +244,17 @@
                         <div class="content">
                             <div class="text">CLIENTES NOVOS</div>
                             <?php
-                                $select_clientes = "select count(cli.idclientes) as conta from clientes cli where cli.idclientes not in 
+                                $select_clientes = "select count(cli.idclientes) as conta from clientes cli where cli.idclientes not in
                                 (select idclientes from clientes c, vendas vd where vd.idcliente = c.idclientes
                                 and month(vd.dataehora) < month(now()) and year(vd.dataehora) = year(now()));";
                                 $result_clientes = mysqli_query($conex, $select_clientes);
                                 $clientes = mysqli_fetch_assoc($result_clientes);
                             ?>
                             <div class="number" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20">
-                                <?php 
-                                    if (!$clientes['conta']) echo "0"; 
-                                    else echo "$clientes[conta]"; 
-                                ?>    
+                                <?php
+                                    if (!$clientes['conta']) echo "0";
+                                    else echo "$clientes[conta]";
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -274,9 +274,9 @@
                                 $livros = mysqli_fetch_assoc($result_livros);
                             ?>
                             <div class="number">
-                                <?php 
-                                    if (!$livros['vendas']) echo "0"; 
-                                    else echo "$livros[vendas]"; 
+                                <?php
+                                    if (!$livros['vendas']) echo "0";
+                                    else echo "$livros[vendas]";
                                 ?>
                             </div>
                         </div>
@@ -318,20 +318,20 @@
                             </div>
 
                             <?php
-                                $select_hoje = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
-                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                $select_hoje = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios
                                 where date(v.dataehora) = date(now()) GROUP BY v.idvendas)) as ventot;";
                                 $result_hoje = mysqli_query($conex, $select_hoje);
                                 $hoje = mysqli_fetch_assoc($result_hoje);
 
-                                $select_ontem = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
-                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                $select_ontem = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios
                                 where date(v.dataehora) = date(date(now())-1) GROUP BY v.idvendas)) as ventot;";
                                 $result_ontem = mysqli_query($conex, $select_ontem);
                                 $ontem = mysqli_fetch_assoc($result_ontem);
 
-                                $select_passada = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv 
-                                ON v.idvendas = ldv.idvenda LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                $select_passada = "select SUM(total) as sum from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv
+                                ON v.idvendas = ldv.idvenda LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios
                                 where date(v.dataehora) < date(date(now())-7) and date(v.dataehora) > date(date(now())-14) GROUP BY v.idvendas)) as ventot;";
                                 $result_passada = mysqli_query($conex, $select_passada);
                                 $passada = mysqli_fetch_assoc($result_passada);
@@ -340,28 +340,28 @@
                                 <li>
                                     HOJE
                                     <span class="pull-right"><b>
-                                    <?php 
-                                    if (!$hoje['sum']) echo "0"; 
-                                    else echo $hoje['sum']; 
+                                    <?php
+                                    if (!$hoje['sum']) echo "0";
+                                    else echo $hoje['sum'];
                                     ?>
                                     </b> <small>VENDAS</small></span>
                                 </li>
                                 <li>
                                     ONTEM
                                     <span class="pull-right"><b>
-                                    <?php 
-                                        if (!$ontem['sum']) echo "0"; 
-                                        else echo $ontem['sum']; 
+                                    <?php
+                                        if (!$ontem['sum']) echo "0";
+                                        else echo $ontem['sum'];
                                     ?>
                                     </b> <small>VENDAS</small></span>
                                 </li>
                                 <li>
                                     SEMANA PASSADA
                                     <span class="pull-right"><b>
-                                    <?php 
-                                        if (!$passada['sum']) echo "0"; 
-                                        else echo $passada['sum']; 
-                                    ?> 
+                                    <?php
+                                        if (!$passada['sum']) echo "0";
+                                        else echo $passada['sum'];
+                                    ?>
                                     </b> <small>VENDAS</small></span>
                                 </li>
                             </ul>
@@ -458,63 +458,35 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive js-sweetalert" >
-                                <table id="mainTable" class="table table-hover dashboard-task-infos table table-striped">
+                                <table id="" class="table table-hover dashboard-task-infos table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Nome</th>
-
                                             <th>Vendidos</th>
                                             <th>Progresso</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>Linda</td>
-
-                                            <td>5</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>Juliette</td>
-
-                                            <td>8</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>Gil</td>
-
-                                            <td>15</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>id</td>
-                                            <td>Paula</td>
-
-                                            <td>4</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr></tr>
-
+                                      <?php
+                                      $query = "select f.idfuncionarios, f.nomefunc, (select sum(ldv.qtdlivros) from livrosdavenda ldv, vendas vd where ldv.idvenda = vd.idvendas and
+                                      vd.idvend = f.idfuncionarios and month(vd.dataehora) = month(now()) and year(vd.dataehora) = year(now())) as vendidos
+                                       from funcionarios f where f.idcargo in (select idcargo from cargos where nomecargo ='Vendedor')";
+                                      $result = mysqli_query($conex, $query);
+                                      $sub_array = '';
+                                      while($row = mysqli_fetch_array($result)){
+                                        if(!$row["vendidos"]) { $row["vendidos"] = 0;}
+                                      // print_r ($row);
+                                       $sub_array = $sub_array. '<tr>'.
+                                                    '<td>'.$row["idfuncionarios"].'</td>'.
+                                                    '<td>'.$row["nomefunc"].'</td>'.
+                                                    '<td>'.$row["vendidos"].'</td>'.
+                                                    '<td><div class="progress"><div class="progress-bar bg-purple" role="progressbar" aria-valuenow="'.$row["vendidos"].
+                                                    '" aria-valuemin="0" aria-valuemax="1000" style="width: 62%"></div></div></td>'.
+                                                    '</tr>';
+                                      }
+                                      echo $sub_array;
+                                      ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -310,11 +310,63 @@
                     <div class="card">
                         <div class="body bg-pink content">
                           <div class="text"><strong>VENDAS DA SEMANA</strong></div>
+                            <?php
+                                $select_um = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-1) GROUP BY v.idvendas)) as ventot;";
+                                $result_um = mysqli_query($conex, $select_um);
+                                $um = mysqli_fetch_assoc($result_um);
+
+                                $select_dois = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-2) GROUP BY v.idvendas)) as ventot;";
+                                $result_dois = mysqli_query($conex, $select_dois);
+                                $dois = mysqli_fetch_assoc($result_dois);
+
+                                $select_tres = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-3) GROUP BY v.idvendas)) as ventot;";
+                                $result_tres = mysqli_query($conex, $select_tres);
+                                $tres = mysqli_fetch_assoc($result_tres);
+
+                                $select_quatro = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-4) GROUP BY v.idvendas)) as ventot;";
+                                $result_quatro = mysqli_query($conex, $select_quatro);
+                                $quatro = mysqli_fetch_assoc($result_quatro);
+
+                                $select_cinco = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-4) GROUP BY v.idvendas)) as ventot;";
+                                $result_cinco = mysqli_query($conex, $select_cinco);
+                                $cinco = mysqli_fetch_assoc($result_cinco);
+
+                                $select_seis = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-3) GROUP BY v.idvendas)) as ventot;";
+                                $result_seis = mysqli_query($conex, $select_seis);
+                                $seis = mysqli_fetch_assoc($result_seis);
+
+                                $select_sete = "select SUM(total) as soma from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda 
+                                LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios 
+                                where date(v.dataehora) = date(date(now())-3) GROUP BY v.idvendas)) as ventot;";
+                                $result_sete = mysqli_query($conex, $select_sete);
+                                $sete = mysqli_fetch_assoc($result_sete);
+
+                                if(!$um) $um=0;
+                                if(!$dois) $dois=0;
+                                if(!$tres) $tres=0;
+                                if(!$quatro) $quatro=0;
+                                if(!$cinco) $cinco=0;
+                                if(!$seis) $seis=0;
+                                if(!$sete) $sete=0;
+                                
+                            ?>
                             <div class="sparkline"  data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
                                  data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
                                  data-offset="90" data-width="100%" data-height="85px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
                                  data-fill-Color="rgba(0, 188, 212, 0)" style="margin-top:10px">
-                                 1,8,3,4,2,6,7
+                                 <?php echo "$sete[soma], $seis[soma], $cinco[soma], $quatro[soma], $tres[soma], $dois[soma], $um[soma]"?>
                             </div>
 
                             <?php

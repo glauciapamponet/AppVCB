@@ -1,3 +1,4 @@
+
 $(function () {
     getMorris('line', 'line_chart');
     getMorris('bar', 'bar_chart');

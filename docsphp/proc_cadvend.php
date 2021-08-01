@@ -9,7 +9,7 @@
     $tipopag = filter_input (INPUT_POST, "tipopag");
     
     $cad_func = "INSERT INTO vendas (idvend, idcliente, idcaixa, dataehora, tipopag) VALUES ('$idvend', '$idcliente', '$idcaixa', NOW(), '$tipopag');";
-    //$result_func = mysqli_query ($conex, $cad_func);
+    $result_func = mysqli_query ($conex, $cad_func);
 
     echo $cad_func;
 

@@ -185,9 +185,7 @@
                               <li>
                                   <a href="pages/cadCli.php">Clientes</a>
                               </li>
-                              <li>
-                                  <a href="pages/cadVen.php">Vendas</a>
-                              </li>
+
 
                         </ul>
                     </li>
@@ -221,7 +219,7 @@
                         <div class="content">
                             <div class="text">VENDAS DO MÊS</div>
                             <?php
-                                $select_vendas = "select SUM(total) as aa from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda
+                                $select_vendas = "select format(SUM(total),2,'de_DE') as aa from((SELECT SUM((l.precolivro * ldv.qtdlivros)) AS total FROM vendas v LEFT OUTER JOIN livrosdavenda ldv ON v.idvendas = ldv.idvenda
                                 LEFT OUTER JOIN livros l ON l.idlivros = ldv.idlivro LEFT OUTER JOIN funcionarios f ON v.idvend = f.idfuncionarios
                                 where month(v.dataehora) = month(now()) and YEAR(v.dataehora) = YEAR(now()) GROUP BY v.idvendas)) as ventotal;";
                                 $result_vendas = mysqli_query($conex, $select_vendas);
@@ -230,7 +228,7 @@
                             <div class="number">
                                 <?php
                                     if (!$vendas['aa']) echo "0";
-                                    else echo "$vendas[aa]";
+                                    else echo "R$"."$vendas[aa]";
                                 ?>
                             </div>
                         </div>
@@ -534,7 +532,7 @@
                                                     '<td>'.$row["vendidos"].'</td>'.
                                                     '<td><div class="progress"><div class="progress-bar bg-purple" role="progressbar" aria-valuenow="'.$row["vendidos"].
                                                     '" aria-valuemin="0" aria-valuemax="200" style="width: '.$row["vendidos"].
-                                                    '"></div></div></td>'.
+                                                    '%"></div></div></td>'.
                                                     '</tr>';
                                       }
                                       echo $sub_array;
@@ -553,9 +551,9 @@
                         <div class="header bg-black">
                             <h2>VENDAS POR HORÁRIO</h2>
                         </div>
-                        
-                            <div id="donut_chart" ></div>
-                        
+                        <div class="body">
+                            <div id="donut_chart" class="dashboard-donut-chart" style="margin-top: -25px"></div>
+                        </div>
                     </div>
                 </div>
                 <!-- #END# Browser Usage -->
@@ -616,64 +614,6 @@
     <script src="js/pages/tables/editable.js"></script>
 
     <script src="plugins/editable-table/mindmup-editabletable.js"></script>
-
-    <script src="js/pages/charts.js"> </script>
-
-    <script type="text/javascript" language="javascript" >
-    <?php
-        $select_manha = "select count(vd.idvendas) AS qtd from vendas vd where month(vd.dataehora) = month(now()) and 
-        time(vd.dataehora) >= '10:00:00' and time(vd.dataehora) <= '13:00:00';";
-        $result_manha = mysqli_query($conex, $select_manha);
-        $manha = mysqli_fetch_assoc($result_manha);
-        $select_tarde = "select count(vd.idvendas) AS qtd from vendas vd where month(vd.dataehora) = month(now()) and 
-        time(vd.dataehora) >= '13:00:00' and time(vd.dataehora) <= '16:00:00';";
-        $result_tarde = mysqli_query($conex, $select_tarde);
-        $tarde = mysqli_fetch_assoc($result_tarde);
-        $select_tardin = "select count(vd.idvendas) AS qtd from vendas vd where month(vd.dataehora) = month(now()) and 
-        time(vd.dataehora) >= '16:00:00' and time(vd.dataehora) <= '19:00:00';";
-        $result_tardin = mysqli_query($conex, $select_tardin);
-        $tardin = mysqli_fetch_assoc($result_tardin);
-        $select_noite = "select count(vd.idvendas) AS qtd from vendas vd where month(vd.dataehora) = month(now()) and 
-        time(vd.dataehora) >= '19:00:00' and time(vd.dataehora) <= '22:00:00';";
-        $result_noite = mysqli_query($conex, $select_noite);
-        $noite = mysqli_fetch_assoc($result_noite);
-
-        $res = $manha + $tarde + $tardin + $noite;
-        if (!$res){
-            $resmanha = 0;
-            $restarde = 0;
-            $restardin = 0;
-            $resnoite = 0;
-        }else{
-            $resmanha = $manha / $res;
-            $restarde = $tarde / $res;
-            $restardin = $tardin / $res;
-            $resnoite = $noite / $res;
-        }
-    ?>
-     $(document).ready(function(){
-        Morris.Donut({
-            element: "donut_chart",
-            data: [{
-                label: '10h - 13h',
-                value: <?php echo $resmanha?>
-                }, {
-                    label: '13h - 16h',
-                    value: <?php echo $restarde?>
-                }, {
-                    label: '16h - 19h',
-                    value: <?php echo $restardin?>
-                }, {
-                    label: '19h - 22h',
-                    value: <?php echo $resnoite?>
-                }],
-            colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)'],
-            formatter: function (y) {
-                return y + '%'
-            }
-        });
-    }
-    </script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>

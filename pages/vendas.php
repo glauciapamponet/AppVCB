@@ -178,9 +178,7 @@
                               <li>
                                   <a href="cadCli.php">Clientes</a>
                               </li>
-                              <li>
-                                  <a href="cadVen.php">Vendas</a>
-                              </li>
+                              
 
                         </ul>
                     </li>

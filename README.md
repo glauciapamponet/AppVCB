@@ -1,12 +1,15 @@
 VCB
 =======================
-[![npm version](https://img.shields.io/npm/v/adminbsb-materialdesign.svg)](https://www.npmjs.com/package/adminbsb-materialdesign)
-![Bower version](https://img.shields.io/bower/v/adminbsb-materialdesign.svg)
+Aplicação de gerenciamento de uma livraria fictícia focada na visualização de um banco de dados MySQL. Desenvolvida para o trabalho da disciplina Bancos de Dados II no curso de Sistemas de Informação - EACH USP.
 
-It was developed with [Bootstrap 3.x Framework](http://getbootstrap.com) and [Google Material Design](https://material.google.com) of powers.
+Desenvolvimento
+----------
+- [Bootstrap 3.x Framework](http://getbootstrap.com) e [Google Material Design](https://material.google.com);
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript);
+- [PHP](https://www.php.net);
+- [MySQL](https://www.mysql.com).
 
-
-Browser Support
+Browsers
 ----------
 - IE 10 +
 - Microsoft Edge (Latest)
@@ -15,13 +18,7 @@ Browser Support
 - Opera (Latest)
 - Safari (Latest)
 
-
-
 License
 ----------
-**AdminBSB - Material Design** is an open source project that is licensed under the [MIT license](http://opensource.org/licenses/MIT).
-
-Donations
-----------
-Donations are **greatly appreciated!**
-**[BUY ME A COFFEE](http://bit.ly/2yEjtx5)**
+[MIT license](http://opensource.org/licenses/MIT).
+Template por [Guaray Yarar](https://github.com/gurayyarar)
